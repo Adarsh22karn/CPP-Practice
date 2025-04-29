@@ -1,0 +1,364 @@
+Question No: 1
+
+Problem Statement
+
+
+
+You are working on a software application that deals with different number formats. The application needs to display a given number in decimal, octal, and hexadecimal formats based on user input.
+
+
+
+Write a program that takes an integer input from the user and displays the number in decimal, octal, and hexadecimal formats using manipulator functions.
+
+
+
+Note: This is a sample question asked in a TCS interview.
+
+Input format :
+The input consists of an integer N.
+
+Output format :
+The first line of output prints the given integer in decimal format.
+
+The second line of output prints the given integer in octal format.
+
+The third line of output prints the given integer in hexadecimal format.
+
+
+
+Refer to the sample output for formatting specifications.
+
+Code constraints :
+0 < N <= 2000
+
+Sample test cases :
+Input 1 :
+100
+Output 1 :
+Decimal format: 100
+Octal format: 144
+Hexadecimal format: 64
+Input 2 :
+126
+Output 2 :
+Decimal format: 126
+Octal format: 176
+Hexadecimal format: 7e
+Input 3 :
+191
+Output 3 :
+Decimal format: 191
+Octal format: 277
+Hexadecimal format: bf
+
+
+
+
+
+
+
+// You are using GCC
+#include<iostream>
+#include<iomanip>
+using namespace std;
+int main()
+{
+    int num;
+    cin>>num;
+    
+    cout<<"Decimal format: "<<num<<endl;
+    cout<<"Octal format: "<<oct<<num<<endl;
+    cout<<"Hexadecimal format: "<<hex<<num<<endl;
+}
+
+00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Question No: 2
+
+Problem Statement
+
+
+
+You are developing a program that requires displaying an integer with leading zeros. To achieve this, you need to format the input number in such a way that it is displayed with leading zeros up to a specified width.
+
+
+
+Write a program that takes an integer as input and displays it with leading zeros, ensuring the total width of the output is 9 digits.
+
+Input format :
+The input consists of an integer, n.
+
+Output format :
+The output prints the input number that should be displayed with leading zeros, ensuring the total width of the output is 9 characters.
+
+Code constraints :
+1 < n < 109
+
+Sample test cases :
+Input 1 :
+7845
+Output 1 :
+000007845
+Input 2 :
+12365478
+Output 2 :
+012365478
+
+
+
+
+
+
+// You are using GCC
+#include<iostream>
+#include<iomanip>
+using namespace std;
+int main()
+{
+    int setfill,setw;
+    string num;
+    cin>>num;
+    int len=num.length();
+    if (len==1)
+    {
+        cout<<"00000000"<<num;
+    }
+    else if(len==2)
+    {
+        cout<<"0000000"<<num;
+    }
+    else if(len==3)
+    {
+        cout<<"000000"<<num;
+    }
+    else if(len==4)
+    {
+        cout<<"00000"<<num;
+    }
+    else if (len==5)
+    {
+        cout<<"0000"<<num;
+    }
+    else if(len==6)
+    {
+        cout<<"000"<<num;
+    }
+    else if(len==7)
+    {
+        cout<<"00"<<num;
+    }
+    else if(len==8)
+    {
+        cout<<"0"<<num;
+    }
+    else
+    {
+        cout<<num;
+    }
+}
+
+00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Question No: 3
+
+Problem Statement
+
+
+
+You are tasked with developing a program for a Math competition. One of the challenges in the competition requires participants to find the sum of the squares of the first n even numbers and odd numbers.
+
+
+
+Write a C++ program that uses an inline function to calculate the sum of the squares of the first n even and odd numbers. The program should take an input value of n from the user and output the result. You need to implement the necessary functions and ensure that the program handles the computation accurately.
+
+
+
+Function specifications:
+
+
+
+inline int sumOfSquaresEven - calculates the sum of squares of the first n even numbers
+
+inline int sumOfSquaresOdd - calculates the sum of squares of the first n odd numbers
+
+
+
+Note: This is a sample question asked in Accenture recruitment.
+
+Input format :
+The input consists of a positive integer N.
+
+Output format :
+The first line of output displays the sum of squares of the first N even numbers.
+
+The second line of output displays the sum of squares of the first N odd numbers.
+
+
+
+Code constraints :
+1 <= N <= 30
+
+Sample test cases :
+Input 1 :
+3
+Output 1 :
+56
+35
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+
+using namespace std;
+
+// Inline function to calculate the sum of squares of the first n even numbers
+inline int sumOfSquaresEven(int n) {
+    int sum = 0;
+    for (int i = 1; i <= n; ++i) {
+        sum += (2 * i) * (2 * i);
+    }
+    return sum;
+}
+
+// Inline function to calculate the sum of squares of the first n odd numbers
+inline int sumOfSquaresOdd(int n) {
+    int sum = 0;
+    for (int i = 0; i < n; ++i) {
+        sum += (2 * i + 1) * (2 * i + 1);
+    }
+    return sum;
+}
+
+int main() {
+    int n;
+
+    // Input the value of n
+    cin >> n;
+
+    // Calculate and output the sum of squares of the first n even numbers
+    cout << sumOfSquaresEven(n) << endl;
+
+    // Calculate and output the sum of squares of the first n odd numbers
+    cout << sumOfSquaresOdd(n) << endl;
+
+    return 0;
+}
+
+
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Question No: 1
+
+Problem Statement
+
+
+
+Suppose you are given a task to write a program that checks if a given number is an Armstrong number or not. Additionally, if the number is an Armstrong number, the program should print its factors. Write a code for the same using inline functions.
+
+
+
+Function specifications:
+
+
+
+inline bool isArmstrong(int number) - This calculates whether the given number is an Armstrong number or not.
+
+inline void printFactors(int number) - This prints the factors of the given number.
+
+
+
+Note: This is a sample question that can be asked in a TCS recruitment.
+
+Input format :
+The input consists of an integer, n.
+
+Output format :
+The output displays whether the given number is an Armstrong number or not.
+
+Additionally, if the given number is an Armstrong number, the second line of output displays the factors of the given number separated by space.
+
+
+
+Refer to the sample outputs for the formatting specifications.
+
+Code constraints :
+0 <= n <= 105
+
+Sample test cases :
+Input 1 :
+409
+Output 1 :
+409 is not an Armstrong number.
+Input 2 :
+153
+Output 2 :
+153 is an Armstrong number.
+1 3 9 17 51 153 
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+// Function to check if a number is an Armstrong number
+inline bool isArmstrong(int number) {
+    int originalNumber = number;
+    int sum = 0;
+    int numDigits = int(log10(number)) + 1;
+
+    while (number > 0) {
+        int digit = number % 10;
+        sum += pow(digit, numDigits);
+        number /= 10;
+    }
+
+    return sum == originalNumber;
+}
+
+// Function to print the factors of a number
+inline void printFactors(int number) {
+    cout << "1 ";
+    for (int i = 2; i <= number / 2; ++i) {
+        if (number % i == 0) {
+            cout << i << " ";
+        }
+    }
+    cout << number;
+}
+
+int main() {
+    int n;
+
+    // Input the integer
+    cin >> n;
+
+    // Check if n is an Armstrong number
+    if (isArmstrong(n)) {
+        cout << n << " is an Armstrong number." << endl;
+        printFactors(n);
+    } else {
+        cout << n << " is not an Armstrong number." << endl;
+    }
+
+    return 0;
+}
+
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+

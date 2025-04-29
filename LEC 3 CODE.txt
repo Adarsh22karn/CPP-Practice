@@ -1,0 +1,309 @@
+Question No: 1
+
+Problem Statement
+
+
+
+Ragu wants to create a program to store and display personal information about individuals. He decided to create a class called Person to represent a person's details with a name, age, and gender as their private attributes. Initialize and display the same using member functions. The name and gender should be displayed in uppercase letters.
+
+
+
+Note: This is a sample question asked in an Infosys interview.
+
+Input format :
+The input consists of the name as a string, age as an integer, and gender as a string of a person in separate lines.
+
+Output format :
+The output displays the name, age, and gender of the person separated by spaces.
+
+The name and gender should be printed in uppercase letters.
+
+Sample test cases :
+Input 1 :
+bob
+28
+male
+Output 1 :
+BOB 28 MALE
+
+
+
+
+
+
+
+#include<iostream>
+#include<bits/stdc++.h>
+#include<string>
+using namespace std;
+class Person
+{
+    private:
+    string name,sex;
+    int age;
+    public:
+    void input()
+    {
+        cin>>name;
+        cin>>age;
+        cin>>sex;
+    }
+    void display()
+    {
+        transform(name.begin(),name.end(),name.begin(),::toupper);
+        transform(sex.begin(),sex.end(),sex.begin(),::toupper);
+        cout<<name<<" "<<age;
+        cout<<" "<<sex<<endl;
+    }
+};
+int main()
+{
+    Person s1;
+    s1.input();
+    s1.display();
+}
+
+
+
+
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Question No: 2
+
+Problem Statement
+
+
+
+Mithra is working on a hospital management system, and you need to implement a feature that allows doctors to input their information and generate a doctor passport. The doctor passport should include the doctor's name, address, and ward number.
+
+
+
+Write a program that takes input from the user for a doctor's name, address, and ward number. Create a class called Doctor object with the provided information and assign it to a doctor Passport object. Finally, display the doctor's name, address, and ward number from the doctor passport object.
+
+
+
+Note: This is a sample question asked in an Accenture interview.
+
+Input format :
+The first line of input consists of a string representing the name of a patient.
+
+The second line of input consists of a string representing the address of a patient.
+
+The third line of input consists of an integer representing the ward number.
+
+Output format :
+The output displays the patient's details.
+
+
+
+Refer to the sample output for format specifications.
+
+Sample test cases :
+Input 1 :
+Raju
+Chennai
+34
+Output 1 :
+Name: Raju
+Address: Chennai
+Ward Number: 34
+Input 2 :
+Manju
+Coimbatore
+37
+Output 2 :
+Name: Manju
+Address: Coimbatore
+Ward Number: 37
+
+
+
+
+
+// You are using GCC
+#include<iostream>
+#include<bits/stdc++.h>
+#include<string>
+using namespace std;
+class Doctor
+{
+    public:
+    string name,address;
+    int ward;
+};
+int main()
+{
+    Doctor s1;
+    cin>>s1.name;
+    cin>>s1.address;
+    cin>>s1.ward;
+    cout<<"Name: "<<s1.name;
+    cout<<"Address: "<<s1.address;
+    cout<<"Ward Number: "<<s1.ward;
+}
+
+
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+
+Question No: 3
+
+Problem Statement
+
+
+
+Guna wants to write a program that counts the number of occurrences of a specific character in a given string.
+
+
+
+He decided to create a class called Occurrence to handle this task. In the class, a string and character are its private attributes. Initialize the variables using a member function. Define a member function countOccurrence() to count the number of times the character occurs in the string.
+
+
+
+Note: This is a sample question asked in a Capgemini interview.
+
+Input format :
+The first line of input consists of a string, str.
+
+The second line of input consists of a single character, ch, which represents the character to be counted for its occurrence in the string.
+
+Output format :
+The output displays a single integer representing the count of occurrences of the character ch in the given input string str.
+
+Code constraints :
+Use the small-case alphabets (a–z), numbers, and special characters.
+
+Sample test cases :
+Input 1 :
+utter
+t
+Output 1 :
+2
+Input 2 :
+453vgft
+5
+Output 2 :
+1
+Input 3 :
+ftf@fdfd@
+@
+Output 3 :
+2
+
+
+
+
+
+
+
+
+// You are using GCC
+#include<iostream>
+#include<string>
+#include<bits/stdc++.h>
+using namespace std;
+class Occurrence
+{
+public:
+int countOccurrence(string str,char ch)
+    {
+        int count=0;
+        for (int i=0;i<str.length();i++)
+        {
+            if (str[i]==ch)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+};
+int main()
+{
+    string strr;
+    char ocur;
+    cin>>strr;
+    cin>>ocur;
+    Occurrence s1;
+    int result= s1.countOccurrence(strr,ocur);
+    cout<<result;
+}
+
+
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+
+Question No: 1
+
+Problem Statement
+
+
+
+Suresh is developing a simple student information system where users can input the name and roll number of a student, and the program will display the student's information. The program provided can be used to achieve this functionality.
+
+
+
+Help him to write a program that takes user input for a name and a roll number and then displays the input in the following format: "<number>: <name>". The program should define a class called Input with two member variables: a string variable called "name" and an integer variable called "rollnum".
+
+
+
+The program should prompt the user to enter values for the name and number, store the input in an object of the Input class, and then display the number followed by a colon and the name.
+
+
+
+Note: This is a sample question asked in an Amcat interview.
+
+Input format :
+The first line of the input consists of a string, which represents the student's name.
+
+The second line of the input consists of an integer, which represents the roll number.
+
+Output format :
+The output prints a student name and roll number based on the given format.
+
+
+
+Refer to the sample output for formatting specifications.
+
+Code constraints :
+The student name should be a non-empty string.
+
+The student roll number should be a non-negative integer.
+
+Sample test cases :
+Input 1 :
+Jane
+158
+Output 1 :
+158 : Jane
+Input 2 :
+Bob!!
+8486
+Output 2 :
+8486 : Bob!!.
+
+
+
+
+
+
+// You are using GCC
+#include<iostream>
+using namespace std;
+int main()
+    {
+        char name[20];
+        int roll;
+        cin>>name;
+        cin>>roll;
+        cout<<roll<<":"<<name<<endl;
+    }
+
+
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+
+
+
+
+

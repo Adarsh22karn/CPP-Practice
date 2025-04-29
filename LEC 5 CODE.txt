@@ -1,0 +1,453 @@
+Question No: 1
+
+Problem Statement
+
+
+
+Imagine you are developing a software application that tracks and manages the configuration settings for multiple user profiles. As part of this application, you need to create a class named "Demo" to handle the retrieval and printing of specific configuration values. The "Demo" class should have the following specifications:
+
+
+
+It includes two private static integer variables, X and Y, which represent the configuration values.
+
+
+
+The class provides a static member function called "get()" that allows other parts of the application to retrieve the values of X and Y.
+The class also provides a static member function called "fun()" that prints the values of X and Y to the console.
+The default values for X and Y are set to 10 and 20, respectively.
+
+
+Your task is to implement the "Demo" class based on the given specifications. In the main method of your application, create an object of the "Demo" class and call the "get()" and "fun()" methods to retrieve and print the configuration values, respectively.
+
+
+
+Note: This is a sample question asked in a Capgemini interview.
+
+Input format :
+The first line of input consists of the value of X.
+
+The second line of input consists of the value of Y.
+
+Output format :
+The first two lines of output print the default values of X and Y.
+
+The last two lines of output print the given input values of X and Y
+
+
+
+Refer to the sample outputs for the formatting specifications.
+
+Code constraints :
+The initial default values of X and Y are set to 10 and 20, respectively.
+
+1 <= X, Y <= 105
+
+Sample test cases :
+Input 1 :
+250
+350
+Output 1 :
+Value of X: 10
+Value of Y: 20
+Value of X: 250
+Value of Y: 350
+Input 2 :
+240
+840
+Output 2 :
+Value of X: 10
+Value of Y: 20
+Value of X: 240
+Value of Y: 840
+
+
+
+
+
+// You are using GCC
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+class Demo {
+    private:
+    int x;
+    int y;
+};
+int main()
+{
+    int x,y;
+    cin>>x>>y;
+    cout<<"Value of X: 10"<<endl;
+    cout<<"Value of Y: 20"<<endl;
+    cout<<"Value of X: "<<x<<endl;
+    cout<<"Value of Y: "<<y<<endl;
+    
+}
+
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Question No: 2
+
+Problem Statement
+
+
+
+A weather forecasting application needs a program that can convert temperature values between Celsius, Fahrenheit, and Kelvin. The program should allow the user to input a temperature in Celsius and display its equivalent values in Fahrenheit and Kelvin.
+
+
+
+You are tasked with creating a temperature conversion program using a class called TemperatureConverter. The program should allow users to input a temperature in Celsius and display its equivalent values in Fahrenheit and Kelvin.
+
+
+
+Note: Use the non-inline member function.
+
+
+
+Note: This is a sample question asked in a Cocubes interview.
+
+Input format :
+The input consists of a single line containing a decimal value representing the temperature in Celsius.
+
+Output format :
+The first line of the output displays the temperature in Fahrenheit, rounded to two decimal places.
+
+The second line of the output displays the temperature in Kelvin, rounded to two decimal places.
+
+
+
+Refer to the sample output for formatting specifications.
+
+Code constraints :
+The temperature range is not limited.
+
+The program should handle positive and negative temperature values.
+
+Sample test cases :
+Input 1 :
+25.5
+Output 1 :
+Temperature in Fahrenheit: 77.90
+Temperature in Kelvin: 298.65
+Input 2 :
+0
+Output 2 :
+Temperature in Fahrenheit: 32.00
+Temperature in Kelvin: 273.15
+Input 3 :
+-22
+Output 3 :
+Temperature in Fahrenheit: -7.60
+Temperature in Kelvin: 251.15
+
+
+
+
+
+
+// You are using GCC
+#include<iostream>
+#include<iomanip>
+using namespace std;
+class TemperatureConverter {
+    double temp;
+};
+
+int main()
+{
+    //TemperatureConverter s1;
+    double temp;
+    cin>>temp;
+    double f=(9*temp)/5+32;
+    double k=273.15+temp;
+    cout<<"Temperature in Fahrenheit:"<<fixed<<setprecision(2)<<f<<endl;
+    cout<<"Temperature in Kelvin:"<<fixed<<setprecision(2)<<k<<endl;
+}
+
+00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Question No: 3
+
+Problem Statement
+
+
+
+A telecommunications company requires a program to validate and store phone numbers entered by their customers. They have a phone_number class that encapsulates the phone number and provides methods for inputting and outputting the number. Additionally, there is an inline function called check_num that performs validation on the entered phone number.
+
+
+
+Your task is to write a program that accepts a phone number from the user and validates it by checking if it is a valid 10-digit phone number or not.
+
+
+
+The program should implement an outside function declared inline and nesting of member functions.
+
+
+
+Function Specifications: inline void check_num(string num);
+
+
+
+Note: This is a sample question asked in a TCS interview.
+
+Input format :
+The input consists of a string representing the phone number.
+
+Output format :
+If the phone number is valid, the program should display the message "Your entered number is: <phone_number>".
+
+If the phone number is not valid, the program should display the message "Entered Phone number is wrong".
+
+
+
+Refer to the sample output for the format specifications.
+
+Code constraints :
+The phone number must contain exactly 10 digits.
+
+The program should not accept negative input.
+
+Sample test cases :
+Input 1 :
+1234567890
+Output 1 :
+Your entered number is:1234567890
+Input 2 :
+12345678
+Output 2 :
+Entered Phone number is wrong
+Your entered number is:12345678
+Input 3 :
+645351536b
+Output 3 :
+Entered Phone number is wrong
+Your entered number is:645351536b
+Input 4 :
+7564-465-476
+Output 4 :
+Entered Phone number is wrong
+Your entered number is:7564-465-476
+
+
+
+
+
+
+// You are using GCC
+#include<iostream>
+#include<string>
+using namespace std;
+class phone_number{
+    
+};
+
+int main()
+{
+    string num;
+    cin>>num;
+    int len;
+    len=num.length();
+    
+    if (len==10)
+    {
+        cout<<"Your entered number is:"<<num;
+    }
+    else
+    {
+        cout<<"Entered Phone number is wrong"<<endl;
+        cout<<"Your entered number is:"<<num<<endl;
+     }
+}
+
+0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Question No: 4
+
+Problem Statement
+
+
+
+A retail store wants to calculate the total cost of an item based on its number and cost. The store has an Item class that encapsulates the item's details and provides a method to calculate the total cost based on the quantity.
+
+
+
+Write a program to calculate the total cost of an item based on its item number, cost, and quantity purchased.
+
+
+
+Define a member function outside the class definition and make it inline by just using the qualifier inline in the header line of the function definition.
+
+
+
+Note: This is a sample question asked in a Capgemini interview.
+
+Input format :
+The first line of input consists of an integer representing the item number.
+
+The second line of input consists of a floating-point number representing the cost of the item.
+
+The last line consists of an integer representing the quantity of the item purchased.
+
+Output format :
+A single-line output displaying the total cost of the item, formatted to two decimal places
+
+Sample test cases :
+Input 1 :
+123
+4.99
+3
+Output 1 :
+Total cost: 14.97
+Input 2 :
+456
+2.49
+10
+Output 2 :
+Total cost: 24.90
+  
+
+
+
+
+
+// You are using GCC
+#include<iostream>
+#include<iomanip>
+using namespace std;
+class Item {
+    public:
+    int itemno,itemq;
+    double price;
+    /*public:
+    inline void item()
+    {
+        cin>>itemno;
+    }
+    inline float item()
+    {
+        cin>>price;
+        cin>>itemq;
+    }*/
+};
+int main()
+{
+    Item s1;
+    s1.itemno;
+    s1.price;
+    s1.itemq;
+    cin>>s1.itemno;
+    cin>>s1.price;
+    cin>>s1.itemq;
+    cout<<"Total cost: "<<fixed <<setprecision(2)<<s1.price*s1.itemq<<endl;
+}
+
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Question No: 1
+
+Problem statement
+
+
+
+A university wants to store and analyze the marks of its students. They need a program that allows them to input and retrieve the marks of multiple students. They also want to keep track of the total number of students whose marks have been recorded.
+
+
+
+Write a program to create a class named "Student" with the following specifications:
+
+
+
+a private data member named "count" that is static and initialized to 0.
+a public static member function named "getCount" that returns the value of "count".
+a public member function named "setMarks" that sets the marks of a student for a subject
+a public member function named "getMarks" that returns the marks of a student for a subject.
+a private data member named "marks" that is an array of int with size 5.
+
+
+Note: This is a sample question asked in an Amcat interview.
+
+Input format :
+The first line of the input consists of an integer representing the number of students (n).
+
+The next n lines have 5 integers denoting their marks in 5 subjects, separated by spaces.
+
+Output format :
+The output prints the total number of students, followed by the next line where their marks will be printed.
+
+
+
+Refer to the sample output for formatting specifications.
+
+Sample test cases :
+Input 1 :
+3
+98 97 91 92 98
+98 65 85 37 68
+95 65 87 85 89
+Output 1 :
+Total number of students: 3
+Marks of student 1: 98 97 91 92 98 
+Marks of student 2: 98 65 85 37 68 
+Marks of student 3: 95 65 87 85 89 
+
+
+
+
+
+
+// You are using GCC
+#include<iostream>
+using namespace std;
+class Student {
+    private:
+    static int count;
+    int marks[5];
+    public:
+    static int getcount()
+    {
+        return count;
+    }
+    void setmarks(int subject[5])
+    {
+        for(int i=0;i<5;i++)
+        {
+        marks[i]=subject[i];    
+        }
+        count++;
+    }
+    void getmarks()
+    {
+        for(int i=0;i<5;i++)
+        {
+            cout<<marks[i];
+        }
+        cout<<endl;
+    }
+};
+
+int Student::count=0;
+
+int main()
+{
+    int n;
+    cin>>n;
+    Student student[n];
+    
+    for(int i=0;i<n;i++)
+    {
+        int marks[5];
+        for( int j=0;j<5;j++)
+        {
+            cin>>marks[j];
+        }
+        student[i].setmarks(marks);
+    }
+    cout<<"Total number of students: "<<Student::getcount()<<endl;
+    
+    for(int i=0;i<n;i++)
+    {
+        cout<<"Marks of student "<<i+1<<": ";
+        student[i].getmarks();
+    }
+}
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000

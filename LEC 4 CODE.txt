@@ -1,0 +1,388 @@
+Question No: 1
+
+Problem Statement
+
+
+
+The task for the student is to create a program that prompts the user to enter a number representing a month and displays the corresponding month as output. To accomplish this, the student should implement a class named Year that includes an enumeration called Month. The Month enumeration should consist of twelve constants representing the months of the year. The student needs to ensure that the program utilizes the Year class and the Month enumeration to correctly map the input number to the corresponding month name for display.
+
+
+
+Note: This is a sample question asked in an Infosys interview.
+
+Input format :
+The input consists of an integer representing the desired month number, n.
+
+Output format :
+If the input is a valid month (between 1 and 12), the output displays the corresponding month as a string.
+
+If the input is invalid, display "Invalid month input".
+
+
+
+Refer to the sample output for the formatting specifications.
+
+Code constraints :
+1 <= n <= 12
+
+Sample test cases :
+Input 1 :
+6
+Output 1 :
+Month: JUNE
+Input 2 :
+13
+Output 2 :
+Invalid month input
+
+
+
+
+
+// You are using GCC
+#include<iostream>
+#include<bits/stdc++.h>
+#include<string>
+using namespace std;
+enum Month {
+    JANUARY=1,FEBRUARY,MARCH,APRIL,MAY,JUNE,JULY,AUGUST,
+    SEPTEMBER,OCTOBER,NOVEMBER,DECEMBER
+};
+class Year {
+    public:
+    static void print(int i)
+    {
+        if (i>= JANUARY && i<= DECEMBER)
+        {
+            switch (static_cast<Month>(i))
+            {
+                case JANUARY: cout<<"Month: JANUARY"; break;
+                case FEBRUARY: cout<<"Month: FEBRUARY"; break;
+                case MARCH: cout<<"Month: MARCH"; break;
+                case APRIL: cout<<"Month: APRIL"; break;
+                case MAY: cout<<"Month: MAY"; break;
+                case JUNE: cout<<"Month: JUNE"; break;
+                case JULY: cout<<"Month: JULY"; break;
+                case AUGUST: cout<<"Month: AUGUST"; break;
+                case SEPTEMBER: cout<<"Month: SEPTEMBER"; break;
+                case OCTOBER: cout<<"Month: OCTOBER"; break;
+                case NOVEMBER: cout<<"Month: NOVEMBER"; break;
+                case DECEMBER: cout<<"Month: DECEMBER"; break;
+                
+            }
+        }
+        else
+        {
+            cout<<"Invalid month input";
+        }
+    }
+};
+int main()
+{
+    int i;
+    cin>>i;
+    Year::print(i);
+}
+
+
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Question No: 2
+
+Problem Statement
+
+
+
+Raju is developing a banking system that stores customer information, including their name, account number, and balance. The program should utilizes a union called Customers to represent customer data. Additionally, it includes a function called increment_balance that increments the balance of customers if it is greater than 1000.
+
+
+
+Create a union called customers that has the name, account number, and balance amount of the customers.
+
+
+
+Write a function that prints the balance of all the customers who have more than Rs. 1000 in their balance, increments their balance by 100, and then prints the incremented value in the output.
+
+
+
+Function Name: void increment_balance(union customers c[], int n)
+
+
+
+Note: This is a sample question asked in a Capgemini interview.
+
+Input format :
+The first line of the input consists of the number of customers N.
+
+The next n lines consist of the name, account number, and balance of each customer separated by a space.
+
+Output format :
+The output displays all the balances which are above 1000 by incrementing the value by 100 separated by space.
+
+Code constraints :
+1 <= N <= 20
+
+Sample test cases :
+Input 1 :
+3
+alice 15 150
+anne 16 1500
+elsa 17 180
+Output 1 :
+1600 
+
+
+
+
+
+// You are using GCC
+#include<bits/stdc++.h>
+using namespace std;
+union Customers {
+    int ac,bm;
+};
+/*void increment_balance(Customers c[],int n)
+{
+    if (bm>1000)
+    bm=bm+100;
+}*/
+int main()
+{
+    Customers s1;
+    int c;
+    cin>>c;
+    string name;
+    for (int i=0;i<c;i++)
+    {
+        cin>>name>>s1.ac>>s1.bm;
+    
+    if (s1.bm>1000)
+    {
+        s1.bm=s1.bm+100;
+        cout<<s1.bm;
+    }
+    }
+    
+}
+
+00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+
+Question No: 3
+
+Problem Statement
+
+
+
+Imagine you are writing a program to calculate the circumference and area of a circular garden, given its radius. You want to represent the garden as a structure, and you want the program to display the results rounded off to 2 decimal places.
+
+
+
+By entering the radius of the garden, the program will calculate and output the circumference and area of the circular garden, providing you with valuable information for gardening purposes.
+
+
+
+Structure Name: struct Circle
+
+
+
+Formula:
+
+circumference = 2 * PI * radius;
+
+area = PI * radius * radius
+
+
+
+Assume that the PI value is 3.14.
+
+
+
+Note: This is a sample question asked in a TCS interview.
+
+Input format :
+The input consists of a single floating-point number representing the radius of the circle.
+
+Output format :
+The first line of output displays the circumference of the circle rounding off to two decimal places.
+
+The second line of output displays the area of the circle rounding off to two decimal places.
+
+Code constraints :
+Use PI value as 3.14.
+
+The radius of the circle is a positive floating-point number.
+
+Sample test cases :
+Input 1 :
+8.3
+Output 1 :
+52.12
+216.31
+Input 2 :
+5.48
+Output 2 :
+34.41
+94.30
+
+
+
+
+
+// You are using GCC
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+struct Circle{
+    float r;
+};
+int main()
+{
+    Circle s1;
+    cin>>s1.r;
+    float c,a;
+    c=2*3.14*s1.r;
+    a=3.14*s1.r*s1.r;
+    cout<<fixed<<setprecision(2)<<c<<endl;
+    cout<<fixed<<setprecision(2)<<a<<endl;
+}
+
+
+
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+
+Question No: 1
+reportIcon
+Single File Programming Question
+Problem Statement
+
+
+
+Prakash is developing a student result processing system for a school. The system needs to input and process the details of a student, including their name, roll number, and marks in five subjects. The program should be utilized to input the student's information, calculate the total marks, average marks, and determine the result status.
+
+
+
+Create a structure named student to store the following details: Roll Number, Name, Mark1, Mark2, Mark3, Mark4, Mark5, Total, and Average.
+
+
+
+Write a program to read Roll No, Name, and five subject marks.
+
+
+
+The total is calculated by adding five subject marks, and the following results are calculated:
+
+
+
+The result "Pass" is printed if all subject marks are greater than or equal to 50 else "Fail" class will be awarded to the subjects who have not cleared 3 subjects 
+The result "Distinction" is printed if the average is >= 75 
+The result "First Class" is printed if the average lies between 60 to 74 (both inclusive) 
+The result "Second Class" is printed if the average lies between 50 to 59 (both inclusive)
+
+
+Note: This is a sample question asked in a Deloitte interview.
+
+Input format :
+The first line of input consists of the student's name.
+
+The second line of input consists of the Roll Number of the student.
+
+The third line of input consists of the Marks of five subjects separated by spaces.
+
+Output format :
+The output prints the Name, Roll Number, and Result based on the conditions on separate lines.
+
+
+
+Refer to the sample outputs for the formatting specifications.
+
+Sample test cases :
+Input 1 :
+Aravind
+19
+90 90 85 92 88
+Output 1 :
+NAME: Aravind
+ROLL NO: 19
+RESULT: Pass
+Distinction
+Input 2 :
+Hema
+24
+40 35 25 30 35
+Output 2 :
+NAME: Hema
+ROLL NO: 24
+RESULT: Fail
+Input 3 :
+Kavya
+56
+95 85 70 60 60
+Output 3 :
+NAME: Kavya
+ROLL NO: 56
+RESULT: Pass
+First Class
+Input 4 :
+Ravi
+114
+55 70 65 50 55
+Output 4 :
+NAME: Ravi
+ROLL NO: 114
+RESULT: Pass
+Second Class
+
+
+
+
+
+
+
+
+// You are using GCC
+#include<iostream>
+using namespace std;
+struct student
+{
+    int roll;
+    float m1,m2,m3,m4,m5,tm,am;
+    string name;
+};
+int main()
+{
+    student s1;
+    cin>>s1.name;
+    cin>>s1.roll;
+    cin>>s1.m1>>s1.m2>>s1.m3>>s1.m4>>s1.m5;
+    cout<<"NAME: "<<s1.name<<endl;
+    cout<<"ROLL NO: "<<s1.roll<<endl;
+    s1.tm=s1.m1+s1.m2+s1.m3+s1.m4+s1.m5;
+    s1.am=s1.tm/5;
+    if (s1.m1>=50 && s1.m2>=50 && s1.m3>=50 && s1.m4>=50 && s1.m5>=50)
+    {
+        cout<<"RESULT: Pass"<<endl;
+    }
+    else
+    {
+        cout<<"RESULT: Fail"<<endl;
+    }
+    //cout<<s1.am;
+    if (s1.am>=75)
+    {
+        cout<<"Distinction"<<endl;
+    }
+    
+    else if (s1.am>=60 && s1.am<=74)
+    {
+        cout<<"First Class"<<endl;
+    }
+    else if (s1.am>=50 && s1.am<=59)
+    {
+        cout<<"Second Class"<<endl;
+    }
+}
+
+00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+

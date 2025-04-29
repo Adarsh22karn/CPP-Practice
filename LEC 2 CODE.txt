@@ -1,0 +1,440 @@
+Question No: 1
+
+Problem Statement
+
+
+
+There was a massive tsunami in Kanyakumari. The buildings and other property were destroyed and valued at millions of dollars. While some of them were hurt and only a handful were safe, many people lost their lives. A news reporter shows up at the scene to assess the scenario involving the people who are alive, dead, and injured. He intended to publish it in the press and ask other nations to assist the affected citizens. Could you kindly write a program to generate a newspaper story to support him in this admirable cause?
+
+
+
+Note: This is sample question asked in a Wipro interview.
+
+Input format :
+The input consists of three integers on separate lines corresponding to the number of people who are dead, injured, and safe.
+
+Output format :
+The output displays the number of people who are dead, injured, and safe.
+
+
+
+Refer to the sample output for formatting specifications.
+
+Sample test cases :
+Input 1 :
+4000
+5000
+10000
+Output 1 :
+1)Dead: 4000
+2)Injured: 5000
+3)Safe: 10000
+Please help the people who are suffering!!!
+Input 2 :
+2000
+3000
+9000
+Output 2 :
+1)Dead: 2000
+2)Injured: 3000
+3)Safe: 9000
+Please help the people who are suffering!!!
+
+
+
+
+
+
+// You are using GCC
+#include<iostream>
+using namespace std;
+int main()
+{
+    int a,b,c;
+    cin>>a>>b>>c;
+    cout<<"1)Dead: " <<a;
+    cout<<"2)Injured: "<<b;
+    cout<<"3)Safe: "<<c;
+    cout<<"Please help the people who are suffering!!!";
+}
+
+
+00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Question No: 2
+
+Problem Statement
+
+
+
+Help India, a famous NGO has been selective in identifying events to raise funds for charity. Suzanne is a volunteer from the NGO who was selling tickets to the public for the charity event. She sold X more adult tickets than children tickets and she sold twice as many senior tickets as children tickets. Assume that an adult ticket costs $5, a children's ticket costs $2, and a senior ticket cost $3.
+
+
+
+Suzanne made Y dollars from ticket sales. Help her to find the number of adult tickets, children's tickets, and senior tickets sold.
+
+
+
+Note: This is a sample question asked in a Capgemini interview.
+
+Input format :
+The first input is an integer value X that corresponds to the number of adult tickets than children tickets.
+
+The second input is an integer value Y that corresponds to the money in dollars made by Suzanne from ticket sales.
+
+Output format :
+The first line of the output should display the number of children's tickets sold.
+
+The second line of the output should display the number of adult tickets sold.
+
+The third line of the output should display the number of senior tickets sold.
+
+Sample test cases :
+Input 1 :
+10
+700
+Output 1 :
+Number of children tickets sold : 50
+Number of adult tickets sold : 60
+Number of senior tickets sold : 100
+
+
+
+
+
+// You are using GCC
+#include<iostream>
+using namespace std;
+int main()
+{
+    int x,y;
+    int child,adult,senior;
+    cin>>x>>y;
+    child=(y-x*5)/13;
+    adult=child+x;
+    senior=child*2;
+    
+    cout<<"Number of children tickets sold : "<<child<<endl;
+    cout<<"Number of adult tickets sold : "<<adult<<endl;
+    cout<<"Number of senior tickets sold : "<<senior<<endl;
+}
+
+
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.
+
+Question No: 1
+
+Problem Statement
+
+
+
+Shamy is a computer science student studying number systems. She wants to write a program that converts a binary number to its decimal equivalent. The program should prompt the user to enter a binary number, perform the conversion, and display the decimal value.
+
+
+
+Note: This is sample question asked in a Capgemini interview.
+
+Input format :
+The input consists of a binary number.
+
+Output format :
+The output is in the form of a decimal.
+
+
+
+Refer to the sample output for formatting specifications.
+
+Code constraints :
+o to 11111111
+
+Sample test cases :
+Input 1 :
+101
+Output 1 :
+Decimal: 5
+
+
+
+
+
+
+// You are using
+#include<iostream>
+using namespace std;
+int bintodec(string n)
+{
+    string num=n;
+    int dec_value=0;
+    int base=1;
+    int len=num.length();
+    for (int i=len-1;i>=0;i--)
+    {
+        if (num[i]=='1')
+        dec_value+=base;
+        base=base*2;
+    }
+    return dec_value;
+}
+int main()
+{
+    string n;
+    cin>>n;
+    cout<<"Decimal: "<<bintodec(n)<<endl;
+}
+
+
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Question No: 2
+
+Problem Statement
+
+
+
+Mythili was tasked with developing a program that collects information from users. The program should prompt the user to enter their employee ID (integer), salary (decimal), and department code (character). Once the user provides the required information, the program should display the entered values for verification using the 'cin' statement and display the output using the 'cout' statement.
+
+
+
+Example
+
+Input:
+
+12
+
+567.344
+
+g
+
+
+
+Output:
+
+Integer: 12
+
+Double: 567.344
+
+Character: g
+
+
+
+Explanation: The program gets the input from the user using 'cin' and displays the output using 'cout'.
+
+
+
+Note: This is sample question asked in a Accenture interview.
+
+Input format :
+The first line of the input consists of an integer, which represents the employee ID.
+
+The second line of the input consists of a double, which represents the salary.
+
+The third line of the input consists of a character, which represents the department code.
+
+Output format :
+The output displays the input values of employee ID, salary, and department code.
+
+
+
+Refer to the sample output for format specifications.
+
+Sample test cases :
+Input 1 :
+12
+567.344
+g
+Output 1 :
+Employee ID: 12
+Salary: 567.34
+Department code: g
+Input 2 :
+23
+2332.233
+F
+Output 2 :
+Employee ID: 23
+Salary: 2332.23
+Department code: F
+
+
+
+
+
+// You are using GCC
+#include<iostream>
+#include<cmath>
+using namespace std;
+int main()
+{
+    int i;
+    double o;
+    char p;
+    cin>>i;
+    cin>>o;
+    cin>>p;
+    float b=round(o*100.0)/100.0;
+    cout<<"Employee ID: "<<i<<endl;
+    cout<<"Salary: "<<b<<endl;
+    cout<<"Department code: "<<p<<endl;
+}
+
+
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+
+Question No: 1
+
+Problem Statement
+
+
+
+Trade Fairs are important for companies to present their products and to get in touch with their customers and business partners. One such grand trade fair event was organized by the Confederation of National Large-Scale Industry.
+
+
+
+The number of people who attended the event on the first day was x. But as the days progressed, the event gained a good response, and the number of people who attended the event on the second day was twice the number of people who attended on the first day. Unfortunately, due to heavy rains on the third day, the number of people who attended the event was exactly half the number of people who attended on the first day.
+
+
+
+Given the total number of people who have attended the event in the first 3 days, find the number of people who have attended the event on days 1, 2, and 3.
+
+
+
+Note: This is a sample question asked in a HCL interview.
+
+Input format :
+The first line of the input is an integer value that corresponds to the total number of people.
+
+Output format :
+The first line of the output should display the number of attendees on day 1.
+
+The second line of the output should display the number of attendees on day 2.
+
+The third line of the output should display the number of attendees on day 3.
+
+
+
+Refer to the sample input and output for format specifications.
+
+Sample test cases :
+Input 1 :
+10500
+Output 1 :
+Number of attendees on day 1: 3000
+Number of attendees on day 2: 6000
+Number of attendees on day 3: 1500
+
+
+
+// You are using GCC
+#include<iostream>
+using namespace std;
+int main()
+{
+    int t,i;
+    cin>>t;
+    i=(t*2)/7;
+    cout<<"Number of attendees on day 1: "<<i<<endl;
+    cout<<"Number of attendees on day 2: "<<i*2<<endl;
+    cout<<"Number of attendees on day 3: "<<i/2<<endl;
+    
+}
+
+
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+
+Question No: 2
+
+Problem Statement
+
+
+
+Mythili was tasked with developing a program that collects information from users. The program should prompt the user to enter their employee ID (integer), salary (decimal), and department code (character). Once the user provides the required information, the program should display the entered values for verification using the 'cin' statement and display the output using the 'cout' statement.
+
+
+
+Example
+
+Input:
+
+12
+
+567.344
+
+g
+
+
+
+Output:
+
+Integer: 12
+
+Double: 567.344
+
+Character: g
+
+
+
+Explanation: The program gets the input from the user using 'cin' and displays the output using 'cout'.
+
+
+
+Note: This is sample question asked in a Accenture interview.
+
+Input format :
+The first line of the input consists of an integer, which represents the employee ID.
+
+The second line of the input consists of a double, which represents the salary.
+
+The third line of the input consists of a character, which represents the department code.
+
+Output format :
+The output displays the input values of employee ID, salary, and department code.
+
+
+
+Refer to the sample output for format specifications.
+
+Sample test cases :
+Input 1 :
+12
+567.344
+g
+Output 1 :
+Employee ID: 12
+Salary: 567.34
+Department code: g
+Input 2 :
+23
+2332.233
+F
+Output 2 :
+Employee ID: 23
+Salary: 2332.23
+Department code: F
+
+
+
+
+
+// You are using GCC
+#include<iostream>
+#include<cmath>
+#include <iomanip>
+using namespace std;
+int main()
+{
+    int i;
+    double o;
+    char p[5];
+    cin>>i;
+    cin>>o;
+    cin>>p;
+    double b = ceil(o*100.0)/100.0;
+    cout<<"Employee ID: "<<i<<endl;
+    cout<<"Salary: "<<b<<endl;
+    cout<<"Department code: "<<p<<endl;
+}
+
+
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000

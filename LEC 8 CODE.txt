@@ -1,0 +1,316 @@
+Question No: 1
+
+Problem Statement
+
+
+
+Sarah is studying number theory and is curious about the sum of divisors of a given number. She wants to write a C++ program to calculate this.
+
+
+
+Can you help her in writing a program that takes a positive integer as input and calculates the sum of all its divisors using a reference variable?
+
+
+
+Function Name: void calculateDivisorSum
+
+
+
+Note: This is a sample question asked in Infosys recruitment.
+
+Input format :
+The input consists of an integer N.
+
+Output format :
+The output displays the sum of all the divisors of N.
+
+Code constraints :
+1 <= N <= 500
+
+Sample test cases :
+Input 1 :
+5
+Output 1 :
+6
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+using namespace std;
+
+void calculateDivisorSum(int N, int &sum) {
+    sum = 0;
+    for (int i = 1; i <= N; ++i) {
+        if (N % i == 0) {
+            sum += i;
+        }
+    }
+}
+
+int main() {
+    int N;
+    cin >> N;
+
+    int divisorSum;
+    calculateDivisorSum(N, divisorSum);
+
+    cout << divisorSum <<endl;
+
+    return 0;
+}
+
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Question No: 2
+
+Problem Statement
+
+
+
+Alice, a math enthusiast, wants to create a program that calculates the power of a given number. She decides to implement a function called "power()" that takes in two parameters: the base number (x) and the power (p). However, Alice wants to utilize call-by-reference to perform the calculation.
+
+
+
+Alice's program prompts the user to enter the base number and the power they wish to raise it. Once the inputs are provided, the "power()" function is called with the memory addresses of the base number and the power variables. The function performs the necessary calculations and updates the value at the memory address of the base number variable.
+
+
+
+Finally, Alice's program displays the result, which is the value of the base number raised to the power specified by the user.
+
+
+
+Note: This is a sample question asked in Infosys recruitment.
+
+Input format :
+The input consists of the base and exponent.
+
+Output format :
+The output prints the result.
+
+Sample test cases :
+Input 1 :
+5 3
+Output 1 :
+125
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+using namespace std;
+
+
+void power(int &base, int exponent) {
+    int result = 1;
+    for (int i = 0; i < exponent; ++i) {
+        result *= base;
+    }
+    base = result;
+}
+
+int main() {
+    int base, exponent;
+    cin >> base >> exponent;
+
+    power(base, exponent);
+
+    cout << base << endl;
+
+    return 0;
+}
+
+
+00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Question No: 3
+
+Problem Statement
+
+
+
+Sarah is a math enthusiast who loves to analyze sets of numbers and calculate their sum. She recently wrote a program to find the sum of 'n' numbers using a function called sum(). To test her function, she created a program that allows her to input a set of numbers and compute their sum using the concept of call by Value.
+
+
+
+When Sarah runs her program, she is prompted to enter the numbers one by one. After inputting all the numbers, the program invokes the sum() function. Inside the function, the numbers are passed by value, meaning that the original values are not modified. The function iterates through the provided numbers, accumulating their sum.
+
+
+
+Once the computation is complete, the program displays the sum on the screen, allowing Sarah to quickly analyze the set of numbers she inputted. This Call by Value approach ensures that the original numbers remain unchanged, providing Sarah with accurate results and preserving the integrity of the input data.
+
+
+
+Note: This is a sample question asked in Capgemini recruitment.
+
+Input format :
+The first line of the input consists of the value of n.
+
+The next n lines of the input consist of the array of elements.
+
+Output format :
+The output prints the sum of elements.
+
+Sample test cases :
+Input 1 :
+5
+14
+25
+36
+47
+58
+Output 1 :
+180
+Input 2 :
+8
+123
+456
+789
+147
+258
+369
+951
+753
+Output 2 :
+3846
+
+
+
+
+
+
+
+
+
+// You are using GCC
+#include <iostream>
+using namespace std;
+
+
+int sum(int arr[], int n) {
+    int total = 0;
+    for (int i = 0; i < n; ++i) {
+        total += arr[i];
+    }
+    return total;
+}
+
+int main() {
+    int n;
+    cin >> n;
+
+    int arr[1000]; 
+
+    for (int i = 0; i < n; ++i) {
+        cin >> arr[i];
+    }
+
+    int result = sum(arr, n);
+
+    cout << result << std::endl;
+
+    return 0;
+}
+
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Question No: 1
+
+Problem Statement
+
+
+
+You are exploring a magical forest that is inhabited by a special species of creatures known as Fibonacci creatures. These creatures have a unique behavior where each creature's size is determined by the sum of the sizes of the previous two creatures. i.e. 1, 1, 2, 3, 5, 8, 13, 21, ...
+
+
+
+The first two creatures in the forest have sizes 1 and 1. You want to determine the size of the nth Fibonacci creature in the forest.
+
+
+
+Write a program that takes the value of n as input and calculates and returns the size of the nth Fibonacci creature using recursion.
+
+
+
+Function Specifications: unsigned long long fibonacci(int num);
+
+
+
+Note: This is a sample question asked in Capgemini recruitment.
+
+Input format :
+The input consists of the value of n.
+
+Output format :
+The output prints the nth Fibonacci term.
+
+Code constraints :
+1 <= n <= 30
+
+Sample test cases :
+Input 1 :
+10
+Output 1 :
+55
+Input 2 :
+20
+Output 2 :
+6765
+Input 3 :
+1
+Output 3 :
+1
+Input 4 :
+5
+Output 4 :
+5
+
+
+
+
+
+
+
+
+
+// You are using GCC
+#include <iostream>
+using namespace std;
+
+unsigned long long fibonacci(int num); 
+unsigned long long fibonacci(int num){
+    if (num <= 0) {
+        return 0;
+    } else if (num == 1 || num == 2) {
+        return 1;
+    } else {
+        return fibonacci(num - 1) + fibonacci(num - 2);
+    }
+}
+
+int main() {
+    int n;
+    cin >> n;
+
+    unsigned long long result = fibonacci(n);
+    cout << result << endl;
+
+    return 0;
+}
+
+00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+
