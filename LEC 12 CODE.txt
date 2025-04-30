@@ -1,0 +1,1042 @@
+ Single File Programming Question
+
+Problem Statement
+
+
+Jones wants to design a program that manages tasks and to-do lists. He wants to implement classes for Task and ToDoList with attributes like task description, due date, and completion status. Use arrays of objects to store task and to-do list information. Help him perform operations such as adding tasks, marking the status of the task, and displaying incomplete tasks.
+
+
+Note: This kind of question helps in clearing Capgemini tests.
+Input format :
+
+The first line of input should contain an integer numTasks, representing the number of tasks to be added.
+
+The next numTasks lines should contain the task information: description, due date(dueDate), an integer, N (0/1).
+Output format :
+
+The output displays all task descriptions that are not marked as completed.
+Code constraints :
+
+0 < Maximum number of tasks <= 10
+
+0 <= N <= 1
+Sample test cases :
+Input 1 :
+
+4
+Finish Homework 
+2023-01-15
+0
+Buy Groceries
+2023-01-16
+1
+Call Mom
+2023-01-18
+0
+Go for a Run
+2023-01-20
+1
+
+Output 1 :
+
+Finish Homework 
+Call Mom
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Task {
+public:
+    string description;
+    string due_date;
+    int completed;
+
+    Task() : completed(0) {} // Initialize completed to 0 by default
+
+    void setTask(string desc, string date, int comp) {
+        description = desc;
+        due_date = date;
+        completed = comp;
+    }
+
+    bool isCompleted() {
+        return completed == 1;
+    }
+};
+
+class ToDoList {
+public:
+    Task tasks[10]; // Assuming a maximum of 10 tasks
+
+    int numTasks;
+
+    ToDoList() : numTasks(0) {}
+
+    void addTask(string desc, string date, int comp) {
+        if (numTasks < 10) {
+            tasks[numTasks].setTask(desc, date, comp);
+            numTasks++;
+        }
+    }
+
+    void displayIncompleteTasks() {
+        for (int i = 0; i < numTasks; i++) {
+            if (!tasks[i].isCompleted()) {
+                cout << tasks[i].description << endl;
+            }
+        }
+    }
+};
+
+int main() {
+    int numTasks;
+    cin >> numTasks;
+
+    ToDoList todoList;
+
+    cin.ignore(); // Clear newline from the previous input
+    for (int i = 0; i < numTasks; i++) {
+        string desc, date;
+        int comp;
+
+        getline(cin, desc);
+        getline(cin, date);
+        cin >> comp;
+        cin.ignore(); // Clear newline
+
+        todoList.addTask(desc, date, comp);
+    }
+
+    todoList.displayIncompleteTasks();
+
+    return 0;
+}
+
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+
+ Single File Programming Question
+
+Problem Statement
+
+
+You are tasked with developing a simple book cataloging program. The program allows the user to enter details of multiple books, such as title, author, and publication year. The program then displays the entered book information.
+
+
+Develop a book cataloging program that allows the user to enter details of multiple books and displays the entered book information. Create a class called Book that stores all the attributes and also uses an array of objects to solve the problem.
+
+
+Function specifications: void displayBooks
+
+
+Note: This question is a question asked in a TCS interview.
+Input format :
+
+The first line of input consists of the total number of books, N.
+
+For each book, the program takes the following inputs:
+
+Title of the book (a string) in the first line.
+
+Author of the book (a string) in the second line.
+
+Publication year of the book (an integer) in the third line.
+Output format :
+
+In each line, the title of the book, the author of the book, and the publication year of the book is displayed in separate lines.
+
+
+Refer to the sample output for the formatting specifications.
+Code constraints :
+
+1 <= N <= 100
+Sample test cases :
+Input 1 :
+
+2
+India
+Gandhi
+1947
+Tiger
+Haritha
+2005
+
+Output 1 :
+
+Book Information:
+Book 1:
+Title: India
+Author: Gandhi
+Publication Year: 1947
+Book 2:
+Title: Tiger
+Author: Haritha
+Publication Year: 2005
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Book {
+public:
+    string title;
+    string author;
+    int publicationYear;
+};
+
+int main() {
+    int N;
+    cin >> N;
+    cin.ignore(); // Clear the newline character from the previous input
+
+    Book books[N];
+
+    for (int i = 0; i < N; i++) {
+        //cout << "Enter details for Book " << i + 1 << ":" << endl;
+        getline(cin, books[i].title);
+        getline(cin, books[i].author);
+        cin >> books[i].publicationYear;
+        cin.ignore(); // Clear the newline character from the input
+    }
+
+    cout << "Book Information:" << endl;
+    for (int i = 0; i < N; i++) {
+        cout << "Book " << i + 1 << ":" << endl;
+        cout << "Title: " << books[i].title << endl;
+        cout << "Author: " << books[i].author << endl;
+        cout << "Publication Year: " << books[i].publicationYear << endl;
+    }
+
+    return 0;
+}
+
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+
+ Single File Programming Question
+
+Problem Statement
+
+
+﻿Help Shanon in solving the following program: Create a program that tracks personal expenses. Implement a class called "Expense" with attributes like category, amount, and date. Use an array of objects to store expense information. Perform operations such as adding new expenses, categorizing expenses, and calculating total expenses for a specific category.
+
+
+Note: This kind of question helps in clearing HCL tests.
+Input format :
+
+The first line of input contains an integer numExpenses representing the number of expenses.
+
+The next numExpenses lines contain the expenses in the format: category, amount date, separated by spaces.
+
+The last line contains the expense that should be calculated.
+Output format :
+
+The program will output the following:
+
+    Total expenses: The total sum of all expenses.
+    Category-specific expenses: The total sum of expenses for a specific category.
+
+
+Refer to the sample output for the formatting specifications.
+Code constraints :
+
+The maximum number of expenses is limited by 10.
+
+The maximum length for the category and date strings is 100 characters.
+
+The maximum amount for an expense is a positive floating-point number.
+Sample test cases :
+Input 1 :
+
+4
+Food 25.50 2023-01-15
+Transportation 12.75 2023-01-16
+Shopping 50.00 2023-01-18
+Food 15.25 2023-01-20
+Food
+
+Output 1 :
+
+Total Expenses: 103.50
+Food: 40.75
+
+
+
+
+
+
+#include <iostream>
+#include <string>
+#include <iomanip>
+
+using namespace std;
+
+class Expense {
+public:
+    string category;
+    float amount;
+    string date;
+
+    Expense(string cat, float amt, string dt) {
+        category = cat;
+        amount = amt;
+        date = dt;
+    }
+
+    // Default constructor
+    Expense() : category(""), amount(0.0), date("") {}
+};
+
+int main() {
+    int numExpenses;
+    cin >> numExpenses;
+    cin.ignore(); // Clear the newline character from the previous input
+
+    const int MAX_EXPENSES = 10;
+    Expense expenses[MAX_EXPENSES];
+
+    for (int i = 0; i < numExpenses; i++) {
+        string cat;
+        float amt;
+        string dt;
+
+        cin >> cat >> amt >> dt;
+        cin.ignore(); // Clear the newline character from the input
+
+        expenses[i] = Expense(cat, amt, dt);
+    }
+
+    string categoryToCalculate;
+    getline(cin, categoryToCalculate);
+
+    float totalExpenses = 0.0;
+    float categoryExpenses = 0.0;
+
+    for (int i = 0; i < numExpenses; i++) {
+        totalExpenses += expenses[i].amount;
+        if (expenses[i].category == categoryToCalculate) {
+            categoryExpenses += expenses[i].amount;
+        }
+    }
+
+    //cout << "Total Expenses: " << totalExpenses << endl;
+    cout << "Total Expenses: " <<fixed<< setprecision(2)<< totalExpenses << endl;
+    cout << categoryToCalculate << ": " << categoryExpenses << endl;
+
+    return 0;
+}
+
+
+
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Single File Programming Question
+
+Problem Statement
+
+
+﻿Dharun wants to build a program that generates an acronym for a given phrase. Implement a function that takes a string representing a phrase as input and returns its corresponding acronym. Use string objects to manipulate the input and generate the acronym.
+
+
+Function Name: string generateAcronym
+
+
+Note: This kind of question will be helpful in clearing Accenture tests.
+Input format :
+
+The input consists of the phrase that has to be abbreviated.
+Output format :
+
+The output prints the abbreviation of the given phrase in upper-case letters.
+Code constraints :
+
+The phrase contains only alphabets. No numbers or special characters should be used.
+
+Length of the phrase < 1000
+Sample test cases :
+Input 1 :
+
+If you know you know
+
+Output 1 :
+
+IYKYK
+
+Input 2 :
+
+Automated Teller Machine
+
+Output 2 :
+
+ATM
+
+
+
+
+
+
+
+
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+string generateAcronym(string phrase) {
+    string acronym = "";
+    bool newWord = true; // To track the start of a new word
+
+    for (char c : phrase) {
+        if (newWord && isalpha(c)) {
+            acronym += toupper(c);
+            newWord = false; // Set to false once we add the first character of a word
+        } else if (!isalpha(c)) {
+            newWord = true; // Set to true when we encounter non-alphabetic characters (word separators)
+        }
+    }
+
+    return acronym;
+}
+
+int main() {
+    string phrase;
+    getline(cin, phrase);
+
+    string acronym = generateAcronym(phrase);
+    cout << acronym << endl;
+
+    return 0;
+}
+
+
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+ Single File Programming Question
+
+Problem Statement
+
+
+You are tasked with building a program that encrypts secret messages using a specified encryption technique. The encryption technique involves shifting each character in the message by a certain number of positions based on an encryption key. The encrypted message will be sent over an insecure channel and can only be decrypted by the intended recipient who knows the encryption key.
+
+
+Function Name: string encryptString
+
+
+Note: This kind of question will be helpful in clearing AMCAT tests.
+Input format :
+
+The first line of input consists of a string to be encrypted, str.
+
+The second line of input consists of an integer, n representing the encryption key.
+Output format :
+
+The output displays the encrypted string as described in the problem statement.
+Code constraints :
+
+1 <= Length of the string, str <= 100
+
+1 <= n <= 5
+Sample test cases :
+Input 1 :
+
+welcome
+2
+
+Output 1 :
+
+ygneqog
+
+Input 2 :
+
+Hello@123
+4
+
+Output 2 :
+
+LippsD567
+
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+string encryptString(string str, int n) {
+    for (char &ch : str) {
+        if (isalpha(ch)) {
+            if (islower(ch)) {
+                // Encrypt lowercase letters
+                ch = 'a' + (ch - 'a' + n) % 26;
+            } else if (isupper(ch)) {
+                // Encrypt uppercase letters
+                ch = 'A' + (ch - 'A' + n) % 26;
+            }
+        }
+    }
+    return str;
+}
+
+int main() {
+    string str;
+    int n;
+
+    // Input
+    cin >> str;
+    cin >> n;
+
+    // Encrypt the string
+    string encrypted_result = encryptString(str, n);
+
+    // Output
+    cout << encrypted_result << endl;
+
+    return 0;
+}
+
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+ Single File Programming Question
+
+Problem Statement
+
+
+Sam wants to build a program that replaces specific words in a given text with user-defined replacements. Implement a function that takes a string representing the original text, a target word, and a replacement word as input, and returns the modified text with the specified replacements. Use string objects to manipulate the input and perform the word replacements.
+
+
+Function Name: string replaceWords
+
+
+Note: This kind of question will be helpful in clearing CTS tests.
+Input format :
+
+The first line of input consists of a sentence.
+
+The second line of input consists of the word to be replaced from the sentence.
+
+The third line of input consists of the replacing word.
+Output format :
+
+If the word to be replaced is present in the sentence, the output prints the modified sentence after replacing it.
+
+If the word to be replaced is not present in the sentence, the output prints the original string as such.
+Code constraints :
+
+2 < Length of the sentence < 1000
+Sample test cases :
+Input 1 :
+
+Hello world! 
+Hello
+Hi
+
+Output 1 :
+
+Hi world! 
+
+Input 2 :
+
+Welcome home
+welcome
+come
+
+Output 2 :
+
+Welcome home
+
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+string replaceWords(string sentence, string target_word, string replacement_word) {
+    size_t found = sentence.find(target_word);
+    
+    // Check if the target word is present in the sentence
+    if (found != string::npos) {
+        // Replace all occurrences of the target word with the replacement word
+        while (found != string::npos) {
+            sentence.replace(found, target_word.length(), replacement_word);
+            found = sentence.find(target_word, found + replacement_word.length());
+        }
+    }
+    
+    return sentence;
+}
+
+int main() {
+    string sentence, target_word, replacement_word;
+    
+    // Input
+    getline(cin, sentence);
+    getline(cin, target_word);
+    getline(cin, replacement_word);
+    
+    // Call the function and print the result
+    string modified_sentence = replaceWords(sentence, target_word, replacement_word);
+    cout << modified_sentence << endl;
+    
+    return 0;
+}
+
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+ Single File Programming Question
+
+Problem Statement
+
+
+Sita wants to write a program to create a Student class with the following attributes: int rollno, int mark1, int mark2, and int mark3.
+
+
+Help her to create an array of objects for the above class. In the main class, calculate and print the following.
+
+    Total marks obtained by each student.
+    The highest mark in each subject with the roll number of the student who scored it.
+    The student who obtained the highest total mark
+
+
+Note: This kind of question will be helpful in clearing mPhasis tests.
+Input format :
+
+The first line of the input consists of the value of n.
+
+The next n lines consist of roll number, mark1, mark2, and mark3 separated by a space.
+Output format :
+
+The first n lines of output print the total marks for each student.
+
+The next 3 lines print the student's roll number and highest marks in each subject, separated by a space.
+
+The last line prints the roll number of the student and the highest total marks scored.
+Sample test cases :
+Input 1 :
+
+5
+1 98 85 76
+2 85 74 65
+3 85 96 75
+4 52 65 79
+5 52 75 65
+
+Output 1 :
+
+259
+224
+256
+196
+192
+1 98
+3 96
+4 79
+1 259
+
+Input 2 :
+
+8
+1 85 96 74
+2 65 85 74
+3 95 96 99
+4 75 85 65
+5 45 85 65
+6 85 75 58
+7 47 58 69
+8 65 74 89
+
+Output 2 :
+
+255
+224
+290
+225
+195
+218
+174
+228
+3 95
+1 96
+3 99
+3 290
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+using namespace std;
+
+class Student {
+public:
+    int rollno;
+    int mark1;
+    int mark2;
+    int mark3;
+
+    int totalMarks() {
+        return mark1 + mark2 + mark3;
+    }
+};
+
+int main() {
+    int n;
+    cin >> n;
+
+    Student students[n];
+
+    // Input student data
+    for (int i = 0; i < n; i++) {
+        cin >> students[i].rollno >> students[i].mark1 >> students[i].mark2 >> students[i].mark3;
+    }
+
+    // Calculate and print total marks for each student
+    for (int i = 0; i < n; i++) {
+        cout << students[i].totalMarks() << endl;
+    }
+
+    // Calculate and print highest marks in each subject with roll number
+    int highest1 = -1, highest2 = -1, highest3 = -1;
+    int roll1, roll2, roll3;
+
+    for (int i = 0; i < n; i++) {
+        if (students[i].mark1 > highest1) {
+            highest1 = students[i].mark1;
+            roll1 = students[i].rollno;
+        }
+        if (students[i].mark2 > highest2) {
+            highest2 = students[i].mark2;
+            roll2 = students[i].rollno;
+        }
+        if (students[i].mark3 > highest3) {
+            highest3 = students[i].mark3;
+            roll3 = students[i].rollno;
+        }
+    }
+
+    cout << roll1 << " " << highest1 << endl;
+    cout << roll2 << " " << highest2 << endl;
+    cout << roll3 << " " << highest3 << endl;
+
+    // Calculate and print the student who obtained the highest total mark
+    int highestTotal = -1;
+    int highestTotalRoll;
+
+    for (int i = 0; i < n; i++) {
+        int total = students[i].totalMarks();
+        if (total > highestTotal) {
+            highestTotal = total;
+            highestTotalRoll = students[i].rollno;
+        }
+    }
+
+    cout << highestTotalRoll << " " << highestTotal << endl;
+
+    return 0;
+}
+
+
+
+
+
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Problem Statement
+
+
+Raju is an accountant for an ABC company. As part of his responsibilities, he needs to manage the employee information and calculate their salaries. To streamline the process, Raju decides to develop a program that allows him to input the details of multiple employees and display their salary information.
+
+
+Write a program to calculate the salary of employees based on their hourly rate and hours worked. The inputs contain the name, rate per hour, and the working hours of the employees. Overtime pay should be considered for employees who work more than 40 hours. Create a class Employee that holds all the attributes and uses an array of objects to solve it.
+
+
+Hint: The overtime pay is calculated by multiplying the number of overtime hours by 1.5 times the regular hourly rate.
+
+
+Note: This question is a sample question asked in a Cocubes interview.
+Input format :
+
+The first line input consists of an integer, maxEmployees, representing the maximum number of employees.
+
+For each employee, the following space-separated details should be entered:
+
+    a string representing the name of the employee.
+    a double value, representing the rate per hour.
+    an integer representing the working hours of the employee.
+
+Output format :
+
+For each employee, the output displays the following information:
+
+The first line of output displays the employee's name.
+
+The second line of output displays the updated salary of the employee. (considering overtime pay for hours worked beyond 40).
+
+
+Refer to the sample outputs for the formatting specifications.
+Code constraints :
+
+1 <= n <= 50
+
+The employee name should not exceed 100 characters.
+
+Hourly rate >0
+
+Hours worked should be a positive integer.
+Sample test cases :
+Input 1 :
+
+3
+John  20.5 35
+Jane  18.7 42
+Johnson 22.0 50
+
+Output 1 :
+
+Employee Information:
+Employee Name: John
+Salary: 717.5
+Employee Name: Jane
+Salary: 841.5
+Employee Name: Johnson
+Salary: 1430
+
+Input 2 :
+
+5
+John 15.5 40
+Smith 20.0 35
+Johnson 18.75 42
+Thompson 22.0 50
+Wilson 12.5 30
+
+Output 2 :
+
+Employee Information:
+Employee Name: John
+Salary: 620
+Employee Name: Smith
+Salary: 700
+Employee Name: Johnson
+Salary: 843.75
+Employee Name: Thompson
+Salary: 1430
+Employee Name: Wilson
+Salary: 375
+
+
+
+
+
+
+
+
+
+
+
+
+#include<iostream>
+#include <string>
+using namespace std;
+class Employee {
+public:
+    string name;
+    double rate_per_hour;
+    int hours_worked;
+    Employee() {} // Default constructor
+    Employee(string n, double r, int h) {
+        name = n;
+        rate_per_hour = r;
+        hours_worked = h;
+    }
+    double calculateSalary() const {
+        if (hours_worked <= 40) {
+            return rate_per_hour * hours_worked;
+        } else {
+            double regular_salary = rate_per_hour * 40;
+            double overtime_hours = hours_worked - 40;
+            double overtime_pay = overtime_hours * (rate_per_hour * 1.5);
+            return regular_salary + overtime_pay;
+        }
+    }
+};
+int main() {
+    int maxEmployees;
+    cin >> maxEmployees;
+    Employee employees[maxEmployees];
+    for (int i = 0; i < maxEmployees; i++) {
+        string name;
+        double rate;
+        int hours;
+        cin >> name >> rate >> hours;
+        Employee emp(name, rate, hours);
+        employees[i] = emp;
+    }
+    cout << "Employee Information:" << endl;
+    for (int i = 0; i < maxEmployees; i++) {
+        cout << "Employee Name: " << employees[i].name << endl;
+        cout << "Salary: " << employees[i].calculateSalary() << endl;
+    }
+    return 0;
+}
+
+
+
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+ Single File Programming Question
+
+Problem Statement
+
+
+Raj wants to build a program that checks the strength of a given password. Implement a function checkPasswordStrength that takes a string representing a password as input and evaluates its strength based on criteria such as length, presence of uppercase letters, lowercase letters, numbers, and special characters. Use string objects to manipulate the password and perform the strength check.
+
+
+-A password is classified as "Weak" if its length is less than 6 characters.
+
+-A password is classified as "Medium" if its length is 6 or more characters, and it contains either an uppercase letter or a lowercase letter, along with at least one numeric digit.
+
+-A password is classified as "Strong" if its length is 8 or more characters and it contains at least one uppercase letter, one lowercase letter, one numeric digit, and one special character.
+
+
+Note: This kind of question will be helpful in clearing Capgemini tests.
+Input format :
+
+The input consists of a password that can be of any length and can contain any combination of characters.
+Output format :
+
+The program prints the strength of the password as "Weak," "Medium," or "Strong" based on the criteria mentioned in the question.
+Code constraints :
+
+The code assumes that the user will input a single line containing the password without any leading or trailing spaces.
+
+1 <= Length of the password <= 25
+Sample test cases :
+Input 1 :
+
+abcdef
+
+Output 1 :
+
+Weak
+
+Input 2 :
+
+Abcdef1
+
+Output 2 :
+
+Medium
+
+Input 3 :
+
+Abcdef1!
+
+Output 3 :
+
+Strong
+
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+#include <string>
+#include <cctype>
+
+using namespace std;
+
+string checkPasswordStrength(const string& password) {
+    int length = password.length();
+    bool hasUppercase = false;
+    bool hasLowercase = false;
+    bool hasDigit = false;
+    bool hasSpecialChar = false;
+
+    for (int i = 0; i < length; i++) {
+        char ch = password[i];
+
+        if (isupper(ch)) {
+            hasUppercase = true;
+        } else if (islower(ch)) {
+            hasLowercase = true;
+        } else if (isdigit(ch)) {
+            hasDigit = true;
+        } else {
+            hasSpecialChar = true;
+        }
+    }
+
+    if (length < 6) {
+        return "Weak";
+    } else if (length >= 6 && (hasUppercase || hasLowercase) && hasDigit) {
+        return "Medium";
+    } else if (length >= 8 && hasUppercase && hasLowercase && hasDigit && hasSpecialChar) {
+        return "Strong";
+    } else {
+        return "Weak";  // Default to Weak if none of the conditions are met
+    }
+}
+
+int main() {
+    string password;
+    cin >> password;
+
+    string strength = checkPasswordStrength(password);
+    cout << strength << endl;
+
+    return 0;
+}
+
+
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000

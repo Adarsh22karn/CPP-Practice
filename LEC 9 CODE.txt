@@ -1,0 +1,401 @@
+Single File Programming Question
+Problem Statement
+
+
+Sandeep is developing a language processing tool for a linguistics research project. The goal is to analyze the consonant usage in a given text. Write a program that takes a paragraph as input and counts the number of consonants in each word of the text. Utilize the pointer-to-pointer concept to analyze the query and count the consonants.
+
+
+Note: This is a sample question asked in a Capgemini interview.
+Input format :
+
+The input consists of a list of words/sentences.
+Output format :
+
+The output prints the count of the consonants that are present in the given sentence/sentences.
+Code constraints :
+
+1 <= Total number of characters in the sentence(s) <= 1000
+
+Consonants are not case-sensitive.
+Sample test cases :
+Input 1 :
+
+I love eating pizza and drinking soda on weekends
+
+Output 1 :
+
+24
+
+
+
+
+
+
+#include <iostream>
+#include <cctype>
+
+using namespace std;
+
+bool isConsonant(char ch) {
+    ch = tolower(ch);
+    return (ch >= 'a' && ch <= 'z' && ch != 'a' && ch != 'e' && ch != 'i' && ch != 'o' && ch != 'u');
+}
+
+int main() {
+    const int maxSize = 1001;
+    char text[maxSize];
+    cout << "Enter a paragraph: ";
+    cin.getline(text, maxSize);
+
+    int totalConsonantCount = 0;
+
+    for (int i = 0; text[i] != '\0'; i++) {
+        if (isConsonant(text[i])) {
+            totalConsonantCount++;
+        }
+    }
+
+    cout << "Total consonants in the paragraph: " << totalConsonantCount << endl;
+
+    return 0;
+}
+
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+Problem Statement
+
+
+Alexa is building a system to manage library books. She wants to check whether the given book is available within the given price range or not. Since she is struck with other work, she is unable to focus on this. Help her write a program that will solve her problem using void pointer. Your program should take the price of the book and availability (Yes or No) as inputs.
+
+
+    The price should be a positive float value.
+    The availability status should be Y, y for Yes and N, n for no.
+    The book is said to be in the given range if 0 < price < 2500.50 and the availability status is Yes (Y or y).
+
+
+Display appropriate messages for everything.
+
+
+Note: This is a sample question asked in an HCL interview.
+Input format :
+
+The first line of input consists of the price of the book as a float value.
+
+The third line of input consists of the availability status of the book(Y, y, N, or n).
+Output format :
+
+The output prints Yes if the inputs are valid and in the given range.
+
+The output prints No if the inputs are not valid and not in the given range.
+Code constraints :
+
+0 < price < 2500.50
+
+The availability status should be either Y, y, N, or n only.
+Sample test cases :
+Input 1 :
+
+2300.50
+y
+
+Output 1 :
+
+Yes
+
+Input 2 :
+
+-89.90
+s
+
+Output 2 :
+
+No
+
+Input 3 :
+
+4500.27
+Y
+
+Output 3 :
+
+No
+
+
+
+
+
+
+
+#include <iostream>
+using namespace std;
+
+void checkBookAvailability(float price, char availability) {
+    if (price > 0 && price < 2500.50 && (availability == 'Y' || availability == 'y')) {
+        cout << "Yes" << endl;
+    } else {
+        cout << "No" << endl;
+    }
+}
+
+int main() {
+    float price;
+    char availability;
+
+    // Input price and availability status
+    cin >> price;
+    cin.ignore();  // Ignore newline character
+    cin >> availability;
+
+    // Check book availability
+    checkBookAvailability(price, availability);
+
+    return 0;
+}
+
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Problem Statement
+
+
+Preethi is working at a bookstore and needs to manage the inventory. Her bookstore receives shipments from two different suppliers, and she wants to find the books that are common between the two shipments.
+
+
+Preethi wants your help to solve her problem. Help her write a program to find the intersection of the two shipment lists based on the book id numbers and help her update the inventory accordingly.
+
+
+Note: The id numbers will be checked based on the order of inputs in both supplies.
+
+
+Function specifications: void findIntersection(int* arr1, int size1, int* arr2, int size2, int& sizeIntersection, int* intersection)
+
+
+Example
+
+
+Input:
+
+4
+
+101 122 157 110
+
+3
+
+157 122 97
+
+
+Output:
+
+157
+
+
+Explanation:
+
+Here, the book id numbers 157 and 122 are common in the given two supplies. But the order is different. So, only 157 is printed as output.
+Input format :
+
+The first line contains an integer size1, representing the size of the first array arr1.
+
+The next line contains size1 space-separated integers, representing the elements of arr1.
+
+The third line contains an integer size2, representing the size of the second array arr2.
+
+The next line contains size2 space-separated integers, representing the elements of arr2.
+Output format :
+
+If the intersection of the two arrays is empty, output "No common IDs found."
+
+Otherwise, output the space-separated common elements of the two arrays.
+
+
+Refer to the sample output for formatting specifications.
+Code constraints :
+
+0 <= size1, size2 <= 100 (Maximum size for arrays)
+
+-109 <= arr1[i], arr2[i] <= 10^9 elements of the arrays
+
+The arrays arr1 and arr2 may contain duplicate elements.
+
+The arrays arr1 and arr2 may not be sorted.
+Sample test cases :
+Input 1 :
+
+4
+101 122 157 110
+3
+157 122 97
+
+Output 1 :
+
+157 
+
+Input 2 :
+
+3
+24 8 9
+4 
+24 9 10 15
+
+Output 2 :
+
+24 9 
+
+
+
+
+
+
+
+
+#include <iostream>
+
+using namespace std;
+
+void findIntersection(int* arr1, int size1, int* arr2, int size2, int& sizeIntersection, int* intersection) {
+    sizeIntersection = 0;
+
+    for (int i = 0; i < size1; i++) {
+        for (int j = 0; j < size2; j++) {
+            if (arr1[i] == arr2[j]) {
+                bool alreadyAdded = false;
+                for (int k = 0; k < sizeIntersection; k++) {
+                    if (intersection[k] == arr1[i]) {
+                        alreadyAdded = true;
+                        break;
+                    }
+                }
+                if (!alreadyAdded) {
+                    intersection[sizeIntersection] = arr1[i];
+                    sizeIntersection++;
+                }
+            }
+        }
+    }
+}
+
+int main() {
+    int size1, size2;
+    cin >> size1;
+    int arr1[size1];
+    for (int i = 0; i < size1; i++) {
+        cin >> arr1[i];
+    }
+
+    cin >> size2;
+    int arr2[size2];
+    for (int i = 0; i < size2; i++) {
+        cin >> arr2[i];
+    }
+
+    int sizeIntersection;
+    int intersection[max(size1, size2)];
+
+    findIntersection(arr1, size1, arr2, size2, sizeIntersection, intersection);
+
+    if (sizeIntersection == 0) {
+        cout << "No common IDs found." << endl;
+    } else {
+        for (int i = 0; i < sizeIntersection; i++) {
+            cout << intersection[i] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
+
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+
+Problem Statement
+
+
+Usha wants to calculate the product of even elements in an array. She needs your help to write a program that takes an array of integers as input and calculates the product of all the even elements in the array using the pointer arithmetic concept. If there are no even elements in the array, the program should output "Invalid input".
+
+
+Function Specifications: int calculateEvenProduct(int* arr, int size)
+
+
+Note: This is a sample question asked in a Capgemini interview.
+Input format :
+
+The first line of input consists of an integer n, which represents the size of the array.
+
+The second line, which contains n array elements, is arr (a sequence of space-separated integers).
+Output format :
+
+The output displays the following format:
+
+If the array contains even elements, output the product of all the even elements.
+
+If the array does not contain any even elements, output "Invalid input".
+
+
+Refer to the sample output for formatting specifications.
+Code constraints :
+
+1<=n<=10
+
+arr>0
+Sample test cases :
+Input 1 :
+
+5
+1 2 3 4 5
+
+Output 1 :
+
+Product of even elements: 8
+
+Input 2 :
+
+5
+1 3 5 7 9
+
+Output 2 :
+
+Invalid input
+
+
+
+
+
+
+
+
+
+#include <iostream>
+
+int calculateEvenProduct(int* arr, int size) {
+    int product = 1;
+    int hasEven = 0; // Flag to check if there are even elements in the array
+
+    for (int i = 0; i < size; i++) {
+        if (*(arr + i) % 2 == 0) {
+            product *= *(arr + i);
+            hasEven = 1; // Set the flag to indicate there is at least one even element
+        }
+    }
+
+    return hasEven ? product : -1; // Return -1 if no even elements found
+}
+
+int main() {
+    int n;
+    std::cin >> n;
+
+    int arr[n];
+    for (int i = 0; i < n; i++) {
+        std::cin >> arr[i];
+    }
+
+    int result = calculateEvenProduct(arr, n);
+
+    if (result == -1) {
+        std::cout << "Invalid input" << std::endl;
+    } else {
+        std::cout << "Product of even elements: " << result << std::endl;
+    }
+
+    return 0;
+}
+

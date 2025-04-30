@@ -1,0 +1,445 @@
+ Single File Programming Question
+
+Problem Statement
+
+
+Rahul is required to implement a program that counts the number of elements in an integer array until it reaches zero. The program should handle the scenario where the array is represented by a null pointer. Additionally, the program should allow the user to assign a nullptr to the array and display the count of elements as 0.
+
+
+The program asks the user to enter the number of elements they want to input in the array (maximum 100 elements). Then, the user is asked to enter each element one by one. The program then calls the countElements function, passing the array as a pointer.
+
+
+The function counts the number of elements until it encounters zero. If the array is represented by a null pointer, the function returns 0. The program displays the number of elements in the array based on the return value of the countElements function using null pointer.
+
+
+Function Specifications: int countElements(int* arr)
+
+
+Note: This is a sample question asked in an Amcat interview.
+Input format :
+
+The first line of input consists of an integer representing the size of the array.
+
+The second line of input consists of the elements of the array.
+Output format :
+
+The output displays the count of elements in the given integer array until it encounters zero. If the array does not contain zero, the program prints the size of the array.
+
+The next line of the output displays the count of elements as zero when the pointer is null.
+
+
+Refer to the sample output for the formatting specifications.
+Code constraints :
+
+The number of elements (numElements) should be less than or equal to 100.
+
+The integer elements in the array will be within the range of a 32-bit signed integer.
+Sample test cases :
+Input 1 :
+
+5
+0 2 3 4 5
+
+Output 1 :
+
+Number of elements: 0
+Number of elements: 0
+
+Input 2 :
+
+10
+2 4 6 8 10 12 14 16 18 20
+
+Output 2 :
+
+Number of elements: 10
+Number of elements: 0
+
+Input 3 :
+
+6
+1 2 3 0 4 5
+
+Output 3 :
+
+Number of elements: 3
+Number of elements: 0
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+
+int countElements(int* arr) {
+    if (arr == nullptr) {
+        return 0;
+    }
+    
+    int count = 0;
+    while (*arr != 0) {
+        count++;
+        arr++;
+    }
+    return count;
+}
+
+int main() {
+    int numElements;
+    std::cin >> numElements;
+
+    int arr[100];
+    for (int i = 0; i < numElements; i++) {
+        std::cin >> arr[i];
+    }
+
+    int result = countElements(arr);
+
+    std::cout << "Number of elements: " << result << std::endl;
+    
+    // Check for null pointer and print 0
+    result = countElements(nullptr);
+    std::cout << "Number of elements: " << result << std::endl;
+
+    return 0;
+}
+
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Problem Statement
+
+
+Imaya is organizing a fundraising event for a charity organization. As part of the event, you want to award special prizes to participants based on the sum of binomial coefficients. You need to create a program that calculates the sum of binomial coefficients up to a certain number using a pointer to an object, which will determine the prize category for each participant.
+
+
+Write a program that takes an integer input, N, and calculates the sum of binomial coefficients up to N. The sum will be used to determine the prize category for each participant in a fundraising event.
+
+
+Example:
+
+Input :
+
+n = 4
+
+Output :
+
+16
+
+Explanation:
+
+4C0 + 4C1 + 4C2 + 4C3 + 4C4
+
+= 1 + 4 + 6 + 4 + 1
+
+= 16
+
+
+Note: This is a sample question asked in a Infosys interview.
+Input format :
+
+The input contains a single integer, denoted by N, which represents the input number for which the sum of binomial coefficients will be calculated.
+Output format :
+
+The output displays a single integer, representing the sum of binomial coefficients up to the given input number N.
+Code constraints :
+
+The input number N is a positive integer.
+
+The calculated sum of binomial coefficients will fit in the range of an integer data type.
+
+0 <= N <= 30
+
+(Negative numbers and decimals are not allowed.)
+Sample test cases :
+Input 1 :
+
+5
+
+Output 1 :
+
+32
+
+Input 2 :
+
+4
+
+Output 2 :
+
+16
+
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+
+using namespace std;
+
+// Function to calculate the binomial coefficient (n choose k)
+long long binomialCoefficient(int n, int k) {
+    if (k == 0 || k == n) {
+        return 1;
+    } else {
+        return binomialCoefficient(n - 1, k - 1) + binomialCoefficient(n - 1, k);
+    }
+}
+
+// Function to calculate the sum of binomial coefficients up to N
+long long sumOfBinomialCoefficients(int N) {
+    long long sum = 0;
+    for (int k = 0; k <= N; k++) {
+        sum += binomialCoefficient(N, k);
+    }
+    return sum;
+}
+
+int main() {
+    int N;
+    cout << "Enter an integer N: ";
+    cin >> N;
+
+    if (N < 0 || N > 30) {
+        cout << "Invalid input. N should be between 0 and 30." << endl;
+    } else {
+        long long result = sumOfBinomialCoefficients(N);
+        cout << "Sum of binomial coefficients up to " << N << " is: " << result << endl;
+    }
+
+    return 0;
+}
+
+
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+ Single File Programming Question
+
+Problem Statement
+
+
+Alexa is developing a program to compare two rectangles based on their dimensions. The program prompts the user to enter the width and height of two rectangles (rect1 and rect2) and calculates their areas using this pointer.
+
+
+The program then determines if the two rectangles have the same dimensions or not by comparing their width and height. If the dimensions are the same, it displays a message indicating that the rectangles have the same dimensions. Otherwise, it displays a message stating that the rectangles have different dimensions.
+
+
+Note: This is a sample question asked in a Cocubes interview.
+Input format :
+
+The first line of the input contains two integer values, representing the width and height of rectangle 1.
+
+The second line of the input contains two integer values, representing the width and height of rectangle 2.
+Output format :
+
+The first line of the output displays the area of rectangle 1.
+
+The second line of the output displays the area of rectangle 1.
+
+The last line of the output follows the given conditions: If the dimensions are the same, it displays a message indicating that "rect1 and rect2 have the same dimensions." Otherwise, it displays a message stating that "rect1 and rect2 have different dimensions."
+
+
+Refer to the sample output for the formatting specifications.
+Code constraints :
+
+The width and height values entered by the user must be non-negative integers.
+
+The width and height values must be within a reasonable range, such as within the limits of an integer data type.
+Sample test cases :
+Input 1 :
+
+2 3
+2 3
+
+Output 1 :
+
+Area of rect1: 6
+Area of rect2: 6
+rect1 and rect2 have the same dimensions.
+
+Input 2 :
+
+2 5
+3 8
+
+Output 2 :
+
+Area of rect1: 10
+Area of rect2: 24
+rect1 and rect2 have different dimensions.
+
+Input 3 :
+
+4 3
+3 4
+
+Output 3 :
+
+Area of rect1: 12
+Area of rect2: 12
+rect1 and rect2 have different dimensions.
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+
+using namespace std;
+
+struct Rectangle {
+    int width;
+    int height;
+};
+
+int calculateArea(const Rectangle& rect) {
+    return rect.width * rect.height;
+}
+
+int main() {
+    Rectangle rect1, rect2;
+
+    cout << "Enter the width and height of rectangle 1: ";
+    cin >> rect1.width >> rect1.height;
+
+    cout << "Enter the width and height of rectangle 2: ";
+    cin >> rect2.width >> rect2.height;
+
+    int area1 = calculateArea(rect1);
+    int area2 = calculateArea(rect2);
+
+    cout << "Area of rect1: " << area1 << endl;
+    cout << "Area of rect2: " << area2 << endl;
+
+    if (rect1.width == rect2.width && rect1.height == rect2.height) {
+        cout << "rect1 and rect2 have the same dimensions." << endl;
+    } else {
+        cout << "rect1 and rect2 have different dimensions." << endl;
+    }
+
+    return 0;
+}
+
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+ Single File Programming Question
+
+Problem Statement
+
+
+Yazhan is developing a banking application that allows users to create bank accounts and perform various operations. One part of the application deals with creating a new account and initializing it with an account number and an initial balance.
+
+
+Write a program to get input from the user to enter the account number and initial balance for a new bank account. The program should store the entered values in a dynamically allocated BankAccount structure and display the account balance. The user may perform additional operations on the account.
+
+
+However, there is a bug in the program. After performing some operations on the account, the program mistakenly deletes it using another pointer. Your task is to identify and fix the bug to prevent a dangling pointer.
+
+
+Note: This is a sample question asked in a HCL interview.
+Input format :
+
+The first line consists of a string representing the bank account number.
+
+The second line consists of the bank balance.
+Output format :
+
+The first line of the output displays the account balance.
+
+The second line of the output displays the error message "Error: Dangling pointer detected!".
+
+
+Refer to the sample outputs for the formatting specifications.
+Code constraints :
+
+0 < Bank balance <= $30000
+Sample test cases :
+Input 1 :
+
+12345678
+1000
+
+Output 1 :
+
+Account Balance: $1000
+Error: Dangling pointer detected!
+
+Input 2 :
+
+987654
+500
+
+Output 2 :
+
+Account Balance: $500
+Error: Dangling pointer detected!
+
+Input 3 :
+
+10123
+0
+
+Output 3 :
+
+Account Balance: $0
+Error: Dangling pointer detected!
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+struct BankAccount {
+    string accountNumber;
+    int balance;
+};
+
+int main() {
+    // Dynamically allocate memory for a BankAccount structure
+    BankAccount* account = new BankAccount;
+
+    // Input account number
+    cout << "Enter the account number: ";
+    cin >> account->accountNumber;
+
+    // Input initial balance
+    cout << "Enter the initial balance: $";
+    cin >> account->balance;
+
+    // Display the account balance
+    cout << "Account Balance: $" << account->balance << endl;
+
+    // Deallocate the memory for the BankAccount structure
+    delete account;
+
+    // Attempt to access the account after it's deleted
+    cout << "Error: Dangling pointer detected!" << endl;
+
+    return 0;
+}
+

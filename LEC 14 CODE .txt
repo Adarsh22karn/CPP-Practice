@@ -1,0 +1,655 @@
+ Single File Programming Question
+
+Problem Statement 
+
+
+You have been assigned the task of designing a program that converts a given sentence into its corresponding Morse code representation.
+
+
+Write a function convertToMorseCode that takes a sentence (string) as input and returns the sentence converted to Morse code. Each letter in the sentence should be replaced by its corresponding Morse code sequence. Spaces between words should be represented by a slash (/).
+
+
+Implement the function convertToMorseCode and write a main program to test it. The main program should prompt the user to enter a sentence and display the sentence in Morse code. The program takes only alphabets as inputs and converts all lowercase letters to uppercase letters before converting to Morse Code.
+
+
+Note: This kind of question helps in clearing TCS tests.
+Input format :
+
+The input consists of a paragraph.
+Output format :
+
+The output displays the Morse code conversion of the given sentence.
+Code constraints :
+
+Length of the paragraph < 1000 characters
+
+Space is converted to slash(/).
+
+The program takes only alphabets as inputs and converts all lowercase letters to uppercase letters before converting to Morse Code.
+Sample test cases :
+Input 1 :
+
+print
+
+Output 1 :
+
+.--. .-. .. -. - 
+
+Input 2 :
+
+This is an example!
+
+Output 2 :
+
+- .... .. ... / .. ... / .- -. / . -..- .- -- .
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+string convertToMorseCode(string sentence) {
+    string morse_code[] = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."};
+    string morse_sentence = "";
+    for (char& c : sentence) {
+        if (isalpha(c)) {
+            c = toupper(c);
+            morse_sentence += morse_code[c - 'A'] + " ";
+        }
+        else if (c == ' ') {
+            morse_sentence += "/ ";
+        }
+    }
+    return morse_sentence;
+}
+
+int main() {
+    string sentence;
+    cout << "Enter a sentence: ";
+    getline(cin, sentence);
+    string morse_sentence = convertToMorseCode(sentence);
+    cout << morse_sentence << endl;
+    return 0;
+}
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+ Single File Programming Question
+
+Problem Statement
+
+
+Manu wants to add um the money given by his mother and father. Both of them gave the money in rupees and paisa. Help him write a program to print the total rupees by creating class Money with two attributes rupee(int) and paisa(int). Include getters and setters to initialize values to the attributes. 
+
+
+In the main method initialize the values for the data members and print their sum.  Bind the data members and member functions inside the class.
+
+
+Note: This is a sample question asked in a Cocubes interview.
+Input format :
+
+The input consists of two amounts: rupee and paisa separated by a space in each line.
+Output format :
+
+The output prints the total sum of the two amounts rounded off to two decimal places.
+Code constraints :
+
+0 <= rupee <= 105
+
+0 <= paisa <= 99
+Sample test cases :
+Input 1 :
+
+50 85
+42 65
+
+Output 1 :
+
+93.50
+
+Input 2 :
+
+254 45
+845 20
+
+Output 2 :
+
+1099.65
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+using namespace std;
+
+class Money {
+    private:
+        int rupee;
+        int paisa;
+    public:
+        Money() {
+            rupee = 0;
+            paisa = 0;
+        }
+        void setRupee(int r) {
+            rupee = r;
+        }
+        void setPaisa(int p) {
+            paisa = p;
+        }
+        int getRupee() {
+            return rupee;
+        }
+        int getPaisa() {
+            return paisa;
+        }
+        double getTotal() {
+            return rupee + paisa / 100.0;
+        }
+};
+
+int main() {
+    Money mother, father, total;
+    int r, p;
+    //cout << "Enter mother's money (rupee paisa): ";
+    cin >> r >> p;
+    mother.setRupee(r);
+    mother.setPaisa(p);
+    //cout << "Enter father's money (rupee paisa): ";
+    cin >> r >> p;
+    father.setRupee(r);
+    father.setPaisa(p);
+    total.setRupee(mother.getRupee() + father.getRupee());
+    total.setPaisa(mother.getPaisa() + father.getPaisa());
+    cout.precision(2);
+    cout << fixed  << total.getTotal() << endl;
+    return 0;
+}
+
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+ Single File Programming Question
+
+Problem Statement
+
+
+You have been tasked with creating a program that calculates the average word length in a given sentence.
+
+
+Write a function calculateAverageWordLength that takes a sentence (string) as input and returns the average length of the words in the sentence.
+
+
+Implement the function calculateAverageWordLength and write a main program to test it. The main program should prompt the user to enter a sentence, and then display the calculated average word length.
+
+
+Note: This kind of question helps in clearing mPhasis tests.
+Input format :
+
+The input consists of a sentence.
+Output format :
+
+The program outputs the average length of the words in the sentence rounded off to three decimal places.
+Code constraints :
+
+Length of the sentence < 1000
+Sample test cases :
+Input 1 :
+
+The quick brown fox jumps over the lazy dog.
+
+Output 1 :
+
+4.000
+
+Input 2 :
+
+The future is gonna be okay
+
+Output 2 :
+
+3.667
+
+
+
+
+#include <iostream>
+#include <string>
+#include <cmath> // For round function
+
+using namespace std;
+
+double calculateAverageWordLength(const string& sentence) {
+    int wordCount = 0;
+    double totalLength = 0;
+
+    string word = "";
+    for (char c : sentence) {
+        if (isalpha(c)) {
+            word += c;
+        } else if (!word.empty()) {
+            wordCount++;
+            totalLength += word.length();
+            word = "";
+        }
+    }
+
+    if (!word.empty()) {
+        wordCount++;
+        totalLength += word.length();
+    }
+
+    if (wordCount == 0) {
+        return 0.000; // Avoid division by zero
+    }
+
+    double averageLength = totalLength / wordCount;
+    return round(averageLength * 1000) / 1000; // Round to 3 decimal places
+}
+
+int main() {
+    string sentence;
+    cout << "Enter a sentence: ";
+    getline(cin, sentence);
+
+    double averageWordLength = calculateAverageWordLength(sentence);
+
+    cout << "The average word length is: " << averageWordLength << endl;
+
+    return 0;
+}
+
+
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+
+ Single File Programming Question
+
+Problem Statement
+
+
+Udhay wants to implement a class called ContactList to manage personal contacts. The class should have attributes: contact names (array of strings) and contact numbers (array of strings). Implement member functions to add contacts, search for a contact by name, and display the contact number. Help him write the code.
+
+
+Note: This question will be helpful in clearing Accenture tests.
+Input format :
+
+The first line consists of an integer N representing the number of contacts to add to the contact list.
+
+The next N lines contain the contact details, where each line consists of a contact name and a contact number separated by a new line.
+
+The last line of input consists of the contact name to be searched in the list.
+Output format :
+
+If the contact name is present in the list, the output prints its contact number.
+
+If the contact name is not present in the list, the output prints "Contact not found.".
+Code constraints :
+
+1 <= N <= 20
+Sample test cases :
+Input 1 :
+
+2
+ABC
+1234567890
+CDE
+7845129630
+CDE
+
+Output 1 :
+
+7845129630
+
+Input 2 :
+
+2
+ABC
+1234567890
+CDE
+7845129630
+XYZ
+
+Output 2 :
+
+Contact not found.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class ContactList {
+    private:
+        string names[20];
+        string numbers[20];
+        int count;
+    public:
+        ContactList() {
+            count = 0;
+        }
+        void addContact(string name, string number) {
+            names[count] = name;
+            numbers[count] = number;
+            count++;
+        }
+        string searchContact(string name) {
+            for (int i = 0; i < count; i++) {
+                if (names[i] == name) {
+                    return numbers[i];
+                }
+            }
+            return "Contact not found.";
+        }
+};
+
+int main() {
+    int n;
+    cin >> n;
+    ContactList cl;
+    for (int i = 0; i < n; i++) {
+        string name, number;
+        cin >> name >> number;
+        cl.addContact(name, number);
+    }
+    string searchName;
+    cin >> searchName;
+    cout << cl.searchContact(searchName) << endl;
+    return 0;
+}
+
+
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+ Single File Programming Question
+
+Problem Statement
+
+
+Hema wants to create a program that performs various operations on two input strings. The program should read two strings from the user, swap the contents of the two strings, and display the modified strings. Hema needs your help to write the program, help her solve this.
+
+
+Note: This is a sample question asked in an Accenture interview.
+Input format :
+
+The input consists of two strings read from the user, each on a separate line.
+Output format :
+
+The output displays the following:
+
+    The first string before and after swapping.
+    The second string before and after swapping.
+
+
+Refer to the sample output for the formatting specifications.
+Sample test cases :
+Input 1 :
+
+Hello World
+Welcome 
+
+Output 1 :
+
+The first string before swapping is : Hello World
+The second string before swapping is : Welcome 
+The first string after swapping is: Welcome 
+The second string after swapping is: Hello World
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string str1, str2, temp;
+    getline(cin, str1);
+    getline(cin, str2);
+    cout << "The first string before swapping is : " << str1 << endl;
+    cout << "The second string before swapping is : " << str2 << endl;
+    temp = str1;
+    str1 = str2;
+    str2 = temp;
+    cout << "The first string after swapping is: " << str1 << endl;
+    cout << "The second string after swapping is: " << str2 << endl;
+    return 0;
+}
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Single File Programming Question
+
+Problem Statement
+
+
+Sam wants to create a class called WeatherForecast that contains weather information. The class should have attributes: location (string), and its temperature (float). He wants to implement member functions to add the weather information and display the location having the lowest temperature. Help him write the code. Assume that the temperature is measured in Celcius.
+
+
+Note: This kind of question helps in clearing Accenture tests.
+Input format :
+
+The first line consists of an integer N representing the number of locations.
+
+The following lines consist of the location name and temperature separated by a new line.
+Output format :
+
+The output prints the coldest location with the lowest temperature.
+Code constraints :
+
+1 <= N <= 20
+Sample test cases :
+Input 1 :
+
+4
+New York
+25.5
+Los Angeles
+20.8
+Chicago
+15.2
+Boston
+18.9
+
+Output 1 :
+
+Chicago
+
+
+
+
+
+
+
+
+
+#include <iostream>
+#include <string>
+
+class WeatherForecast {
+private:
+    std::string coldestLocation;
+    float lowestTemperature;
+
+public:
+    WeatherForecast() {
+        coldestLocation = "";
+        lowestTemperature = 9999.0;  // Initializing to a high value
+    }
+
+    void addWeatherInfo(std::string location, float temperature) {
+        if (temperature < lowestTemperature) {
+            coldestLocation = location;
+            lowestTemperature = temperature;
+        }
+    }
+
+    void displayColdestLocation() {
+        std::cout << coldestLocation << std::endl;
+    }
+};
+
+int main() {
+    int N;
+    std::cin >> N;
+    std::cin.ignore();  // Ignore newline character after reading N
+
+    WeatherForecast forecast;
+
+    for (int i = 0; i < N; i++) {
+        std::string location;
+        float temperature;
+
+        std::getline(std::cin, location);
+        std::cin >> temperature;
+        std::cin.ignore();  // Ignore newline character after reading temperature
+
+        forecast.addWeatherInfo(location, temperature);
+    }
+
+    forecast.displayColdestLocation();
+
+    return 0;
+}
+
+
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000+
+ Single File Programming Question
+
+Problem Statement
+
+
+Manu wants to add um the money given by his mother and father. Both of them gave the money in rupees and paisa. Help him write a program to print the total rupees by creating class Money with two attributes rupee(int) and paisa(int). Include getters and setters to initialize values to the attributes. 
+
+
+In the main method initialize the values for the data members and print their sum.  Bind the data members and member functions inside the class.
+
+
+Note: This is a sample question asked in a Cocubes interview.
+Input format :
+
+The input consists of two amounts: rupee and paisa separated by a space in each line.
+Output format :
+
+The output prints the total sum of the two amounts rounded off to two decimal places.
+Code constraints :
+
+0 <= rupee <= 105
+
+0 <= paisa <= 99
+Sample test cases :
+Input 1 :
+
+50 85
+42 65
+
+Output 1 :
+
+93.50
+
+Input 2 :
+
+254 45
+845 20
+
+Output 2 :
+
+1099.65
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+class Money {
+    private:
+        int rupee;
+        int paisa;
+    public:
+        void setRupee(int r) {
+            rupee = r;
+        }
+        void setPaisa(int p) {
+            paisa = p;
+        }
+        int getRupee() {
+            return rupee;
+        }
+        int getPaisa() {
+            return paisa;
+        }
+};
+
+int main() {
+    Money m1, m2;
+    int r1, p1, r2, p2;
+    cin >> r1 >> p1 >> r2 >> p2;
+    m1.setRupee(r1);
+    m1.setPaisa(p1);
+    m2.setRupee(r2);
+    m2.setPaisa(p2);
+    int totalRupee = m1.getRupee() + m2.getRupee();
+    int totalPaisa = m1.getPaisa() + m2.getPaisa();
+    totalRupee += totalPaisa / 100;
+    totalPaisa = totalPaisa % 100;
+    cout << fixed << setprecision(2) << totalRupee << "." << setw(2) << setfill('0') << totalPaisa << endl;
+    return 0;
+}
+
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+
+
+

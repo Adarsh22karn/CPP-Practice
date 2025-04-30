@@ -1,0 +1,434 @@
+ Single File Programming Question
+
+Problem Statement
+
+
+Lakshith and Manav are best friends. During their summer vacation, both will play interesting games. They intend to play in matrix elements this time. Lakshith will play the original (N) matrix, and Manav will find the change in the order of the (N) matrix. Finally, they will decide whether both the original and changed order of the matrix are the same. Develop a program to find the required outcome.
+Input format :
+
+The input consists of an n-by-n matrix with values as integers.
+Output format :
+
+The output consists of the order of the matrix change as an integer and the comparison of both the original and changed matrix as a string.
+
+
+Refer to the sample output for formatting specifications.
+Sample test cases :
+Input 1 :
+
+5
+1 2 3 4 -5
+4 5 6 -7 8
+-1 -8 -7 3 6
+2 5 8 9 7
+1 4 7 3 6
+
+Output 1 :
+
+The original matrix is:
+1	2	3	4	-5	
+4	5	6	-7	8	
+-1	-8	-7	3	6	
+2	5	8	9	7	
+1	4	7	3	6	
+The Transpose matrix is:
+1	4	-1	2	1	
+2	5	-8	5	4	
+3	6	-7	8	7	
+4	-7	3	9	3	
+-5	8	6	7	6	
+Matrix is not Symmetric
+
+Input 2 :
+
+3
+1 7 3
+7 4 -5
+3 -5 6
+
+Output 2 :
+
+The original matrix is:
+1	7	3	
+7	4	-5	
+3	-5	6	
+The Transpose matrix is:
+1	7	3	
+7	4	-5	
+3	-5	6	
+Matrix is Symmetric
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+
+using namespace std;
+
+// Function to check if a matrix is symmetric
+bool isSymmetric(int** matrix, int n) {
+    for (int i = 0; i < n; ++i) {
+        for (int j = i + 1; j < n; ++j) {
+            if (matrix[i][j] != matrix[j][i]) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+// Function to print a matrix
+void printMatrix(int** matrix, int n) {
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            cout << matrix[i][j] << "\t";
+        }
+        cout << endl;
+    }
+}
+
+int main() {
+    int n;
+    cin >> n;
+
+    // Create a dynamically allocated 2D array for the matrix
+    int** matrix = new int*[n];
+    for (int i = 0; i < n; ++i) {
+        matrix[i] = new int[n];
+    }
+
+    // Input the elements of the matrix
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+            cin >> matrix[i][j];
+        }
+    }
+
+    // Calculate the transpose of the matrix
+    int** transposeMatrix = new int*[n];
+    for (int i = 0; i < n; ++i) {
+        transposeMatrix[i] = new int[n];
+        for (int j = 0; j < n; ++j) {
+            transposeMatrix[i][j] = matrix[j][i];
+        }
+    }
+
+    // Print the original matrix
+    cout << "The original matrix is:" << endl;
+    printMatrix(matrix, n);
+
+    // Print the transpose matrix
+    cout << "The Transpose matrix is:" << endl;
+    printMatrix(transposeMatrix, n);
+
+    // Check if the matrix is symmetric and print the result
+    if (isSymmetric(matrix, n)) {
+        cout << "Matrix is Symmetric" << endl;
+    } else {
+        cout << "Matrix is not Symmetric" << endl;
+    }
+
+    // Deallocate memory
+    for (int i = 0; i < n; ++i) {
+        delete[] matrix[i];
+        delete[] transposeMatrix[i];
+    }
+    delete[] matrix;
+    delete[] transposeMatrix;
+
+    return 0;
+}
+
+
+
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+ Single File Programming Question
+
+Problem Statement
+
+
+Imagine you are developing a ticketing system for a theater. As part of the system, you need to implement a feature that allows customers to search for available seats based on their preferences. The seat availability data is stored in a 1D array.
+
+
+Create a class called ArraySearch and calculate the seat availability. Write the code for the same.
+
+
+Note: This is a sample question asked in a HCL interview.
+Input format :
+
+The first line of the input consists of the number of seats, n.
+
+The next line of input consists of n space-separated seat numbers.
+
+The last line of input is the seat number to be searched.
+Output format :
+
+The output prints the status of the seat availability.
+
+
+Refer to the sample output for the formatting specifications.
+Code constraints :
+
+Seat numbers should be a positive integer only.
+Sample test cases :
+Input 1 :
+
+5
+50 40 10 20 30
+20
+
+Output 1 :
+
+Seat is available.
+
+Input 2 :
+
+5
+50 40 30 10 20
+80
+
+Output 2 :
+
+Seat is not available.
+
+
+
+
+
+
+
+
+
+
+
+
+#include <iostream>
+
+// Declare the use of the std namespace
+using namespace std;
+
+class ArraySearch {
+private:
+    int* seats;
+    int size;
+
+public:
+    // Constructor to initialize the seat availability data
+    ArraySearch(int* seatNumbers, int n) {
+        seats = new int[n];
+        size = n;
+        for (int i = 0; i < n; ++i) {
+            seats[i] = seatNumbers[i];
+        }
+    }
+
+    // Destructor to free memory
+    ~ArraySearch() {
+        delete[] seats;
+    }
+
+    // Function to check if a seat is available
+    string checkAvailability(int targetSeat) {
+        for (int i = 0; i < size; ++i) {
+            if (seats[i] == targetSeat) {
+                return "Seat is available.";
+            }
+        }
+        return "Seat is not available.";
+    }
+};
+
+int main() {
+    int n;
+    cin >> n;
+    int* seatNumbers = new int[n];
+
+    for (int i = 0; i < n; ++i) {
+        cin >> seatNumbers[i];
+    }
+
+    int targetSeat;
+    cin >> targetSeat;
+
+    ArraySearch arraySearch(seatNumbers, n);
+    string result = arraySearch.checkAvailability(targetSeat);
+
+    cout << result << endl;
+
+    delete[] seatNumbers; // Free allocated memory
+
+    return 0;
+}
+
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+
+ Single File Programming Question
+
+Problem Statement
+
+
+Akil is a sales manager who wants to evaluate the performance of his sales team. He wants to create a program that allows him to enter the details of a salesperson, including their name and the total sales achieved over a specific number of months. Calculate the average sales per month and display the salesperson's information using a pointer to the data member.
+
+
+Note: This is a sample question asked in a Capgemini interview.
+Input format :
+
+The first line of input consists of the salesperson's name as a string.
+
+The second line of input consists of the number of months as an integer.
+
+For each month, the sales achieved during that month are represented as an integer number.
+Output format :
+
+The output displays the following information:
+
+
+The first line of output consists of the details of salesperson in the following format: "Salesperson Details:"
+
+The second line of output contains the salesperson name.
+
+The third line of output contains the total sales.
+
+The last line of output contains the average sales.
+
+
+Refer to the sample output for formatting specifications.
+Sample test cases :
+Input 1 :
+
+John
+5
+1000 2000 1500 3000 2500
+
+Output 1 :
+
+Salesperson Details:
+Name: John
+Total Sales: 10000
+Average Sales: 2000
+
+Input 2 :
+
+Emily
+3
+500 750 900
+
+Output 2 :
+
+Salesperson Details:
+Name: Emily
+Total Sales: 2150
+Average Sales: 716
+
+
+
+
+
+
+
+
+
+#include<iostream>
+using namespace std;
+int main()
+{
+string name;
+int ns;
+cin>>name;
+cin>>ns;
+
+int arr[ns],i,j
+for (i=0;i<ns;i++)
+{
+	cin>>arr[i];	
+}
+cout<<"Salesperson Details:"<<endl;
+cout<<"Name: "<<name<<endl;
+
+int sum=0; 
+for (j=0;j<ns;j++)
+{
+	sum sum+arr[j];
+}
+cout<<"Total Sales: "<<sum<<endl;
+int av;
+av=sum/ns;
+cout<<"Average Sales: "<<av;
+
+}
+
+
+000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+ 
+Single File Programming Question
+
+Problem Statement
+
+
+Meena is a fitness enthusiast who wants to track her fitness statistics. She wants to create a program that allows her to input and update her fitness data. She needs to keep track of her name and weight. Meena prefers to use a class called "FitnessData" to store and manage her fitness information.
+
+
+Write a program that utilizes the "FitnessData" class and allows Meena to input and update her fitness data. Use a pointer to a data member to access and modify the weight field.
+
+
+Note: This is a sample question asked in a TCS interview.
+Input format :
+
+The first input consists of the name as a string.
+
+The second input consists of the initial weight as a double.
+
+The third input consists of the updated weight as a double.
+Output format :
+
+The output display the updated fitness information, including Meena's name and weight.
+
+
+Refer to the sample output for formatting specifications.
+Code constraints :
+
+The name input will contain no spaces and will be a single word.
+
+The weight input will be a positive real number.
+Sample test cases :
+Input 1 :
+
+Meena
+60.5
+65.2
+
+Output 1 :
+
+Updated fitness information:
+Name: Meena
+Weight: 65.2
+
+
+
+
+
+
+#include<iostream>
+using namespace std;
+int main()
+{
+    	string name;
+	float iw,uw;
+    	cin>>name;
+	cin>>iw;
+   	cin>>uw;
+	cout<<"Updated fitness information:"<<endl;
+    	cout<<"Name: "<<name<<endl;
+	cout<<"Weight: "<<uw;
+}
